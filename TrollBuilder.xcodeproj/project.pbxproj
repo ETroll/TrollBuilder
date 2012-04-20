@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CBCA2CD1154226540023DF27 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA2CD0154226540023DF27 /* Cocoa.framework */; };
+		CBCA2CDB154226540023DF27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CD9154226540023DF27 /* InfoPlist.strings */; };
+		CBCA2CDD154226540023DF27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CDC154226540023DF27 /* main.m */; };
+		CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CDF154226540023DF27 /* Credits.rtf */; };
+		CBCA2CE4154226540023DF27 /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE3154226540023DF27 /* TBAppDelegate.m */; };
+		CBCA2CE7154226540023DF27 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CE5154226540023DF27 /* MainMenu.xib */; };
+		CBCA2CEA154226550023DF27 /* TrollBuilder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CBCA2CCC154226540023DF27 /* TrollBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrollBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBCA2CD0154226540023DF27 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CBCA2CD3154226540023DF27 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CBCA2CD4154226540023DF27 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CBCA2CD5154226540023DF27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CBCA2CD8154226540023DF27 /* TrollBuilder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrollBuilder-Info.plist"; sourceTree = "<group>"; };
+		CBCA2CDA154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBCA2CDC154226540023DF27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CBCA2CDE154226540023DF27 /* TrollBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrollBuilder-Prefix.pch"; sourceTree = "<group>"; };
+		CBCA2CE0154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CBCA2CE2154226540023DF27 /* TBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBAppDelegate.h; sourceTree = "<group>"; };
+		CBCA2CE3154226540023DF27 /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
+		CBCA2CE6154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CBCA2CE9154226540023DF27 /* TrollBuilder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrollBuilder.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBCA2CC9154226540023DF27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBCA2CD1154226540023DF27 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CBCA2CC1154226540023DF27 = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CD6154226540023DF27 /* TrollBuilder */,
+				CBCA2CCF154226540023DF27 /* Frameworks */,
+				CBCA2CCD154226540023DF27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CBCA2CCD154226540023DF27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CCC154226540023DF27 /* TrollBuilder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBCA2CCF154226540023DF27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CD0154226540023DF27 /* Cocoa.framework */,
+				CBCA2CD2154226540023DF27 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBCA2CD2154226540023DF27 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CD3154226540023DF27 /* AppKit.framework */,
+				CBCA2CD4154226540023DF27 /* CoreData.framework */,
+				CBCA2CD5154226540023DF27 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CBCA2CD6154226540023DF27 /* TrollBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CE2154226540023DF27 /* TBAppDelegate.h */,
+				CBCA2CE3154226540023DF27 /* TBAppDelegate.m */,
+				CBCA2CE5154226540023DF27 /* MainMenu.xib */,
+				CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */,
+				CBCA2CD7154226540023DF27 /* Supporting Files */,
+			);
+			path = TrollBuilder;
+			sourceTree = "<group>";
+		};
+		CBCA2CD7154226540023DF27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CD8154226540023DF27 /* TrollBuilder-Info.plist */,
+				CBCA2CD9154226540023DF27 /* InfoPlist.strings */,
+				CBCA2CDC154226540023DF27 /* main.m */,
+				CBCA2CDE154226540023DF27 /* TrollBuilder-Prefix.pch */,
+				CBCA2CDF154226540023DF27 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBCA2CCB154226540023DF27 /* TrollBuilder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBCA2CED154226550023DF27 /* Build configuration list for PBXNativeTarget "TrollBuilder" */;
+			buildPhases = (
+				CBCA2CC8154226540023DF27 /* Sources */,
+				CBCA2CC9154226540023DF27 /* Frameworks */,
+				CBCA2CCA154226540023DF27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrollBuilder;
+			productName = TrollBuilder;
+			productReference = CBCA2CCC154226540023DF27 /* TrollBuilder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBCA2CC3154226540023DF27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TB;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = CBCA2CC6154226540023DF27 /* Build configuration list for PBXProject "TrollBuilder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CBCA2CC1154226540023DF27;
+			productRefGroup = CBCA2CCD154226540023DF27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBCA2CCB154226540023DF27 /* TrollBuilder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBCA2CCA154226540023DF27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBCA2CDB154226540023DF27 /* InfoPlist.strings in Resources */,
+				CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */,
+				CBCA2CE7154226540023DF27 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBCA2CC8154226540023DF27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBCA2CDD154226540023DF27 /* main.m in Sources */,
+				CBCA2CE4154226540023DF27 /* TBAppDelegate.m in Sources */,
+				CBCA2CEA154226550023DF27 /* TrollBuilder.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CBCA2CD9154226540023DF27 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBCA2CDA154226540023DF27 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CBCA2CDF154226540023DF27 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBCA2CE0154226540023DF27 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		CBCA2CE5154226540023DF27 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBCA2CE6154226540023DF27 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CBCA2CEB154226550023DF27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CBCA2CEC154226550023DF27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CBCA2CEE154226550023DF27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
+				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CBCA2CEF154226550023DF27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
+				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBCA2CC6154226540023DF27 /* Build configuration list for PBXProject "TrollBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBCA2CEB154226550023DF27 /* Debug */,
+				CBCA2CEC154226550023DF27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBCA2CED154226550023DF27 /* Build configuration list for PBXNativeTarget "TrollBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBCA2CEE154226550023DF27 /* Debug */,
+				CBCA2CEF154226550023DF27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBCA2CE9154226540023DF27 /* TrollBuilder.xcdatamodel */,
+			);
+			currentVersion = CBCA2CE9154226540023DF27 /* TrollBuilder.xcdatamodel */;
+			path = TrollBuilder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CBCA2CC3154226540023DF27 /* Project object */;
+}
