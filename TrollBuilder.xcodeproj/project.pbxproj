@@ -12,8 +12,14 @@
 		CBCA2CDD154226540023DF27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CDC154226540023DF27 /* main.m */; };
 		CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CDF154226540023DF27 /* Credits.rtf */; };
 		CBCA2CE4154226540023DF27 /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE3154226540023DF27 /* TBAppDelegate.m */; };
-		CBCA2CE7154226540023DF27 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CE5154226540023DF27 /* MainMenu.xib */; };
 		CBCA2CEA154226550023DF27 /* TrollBuilder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */; };
+		CBCA2CFF15422D500023DF27 /* ProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CFD15422D500023DF27 /* ProjectCell.m */; };
+		CBCA2D0015422D500023DF27 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CFE15422D500023DF27 /* ProjectCell.xib */; };
+		CBCA2D0915422D970023DF27 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D0715422D970023DF27 /* LeftViewController.m */; };
+		CBCA2D0A15422D970023DF27 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2D0815422D970023DF27 /* LeftViewController.xib */; };
+		CBCA2D0D15422DDC0023DF27 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */; };
+		CBCA2D0F15422E570023DF27 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2D0E15422E570023DF27 /* MainWindow.xib */; };
+		CBCA2D1415422F280023DF27 /* TBXCodeproject.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D1315422F280023DF27 /* TBXCodeproject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +35,18 @@
 		CBCA2CE0154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		CBCA2CE2154226540023DF27 /* TBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBAppDelegate.h; sourceTree = "<group>"; };
 		CBCA2CE3154226540023DF27 /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
-		CBCA2CE6154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CBCA2CE9154226540023DF27 /* TrollBuilder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrollBuilder.xcdatamodel; sourceTree = "<group>"; };
+		CBCA2CFC15422D500023DF27 /* ProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCell.h; sourceTree = "<group>"; };
+		CBCA2CFD15422D500023DF27 /* ProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCell.m; sourceTree = "<group>"; };
+		CBCA2CFE15422D500023DF27 /* ProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
+		CBCA2D0215422D7E0023DF27 /* TBXCodeproject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXCodeproject.h; sourceTree = "<group>"; };
+		CBCA2D0615422D970023DF27 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		CBCA2D0715422D970023DF27 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		CBCA2D0815422D970023DF27 /* LeftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
+		CBCA2D0B15422DDC0023DF27 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		CBCA2D0E15422E570023DF27 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		CBCA2D1315422F280023DF27 /* TBXCodeproject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXCodeproject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +100,11 @@
 		CBCA2CD6154226540023DF27 /* TrollBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				CBCA2D0515422D8B0023DF27 /* Controllers */,
+				CBCA2D0115422D6E0023DF27 /* Models */,
+				CBCA2CF915422D310023DF27 /* Views */,
 				CBCA2CE2154226540023DF27 /* TBAppDelegate.h */,
 				CBCA2CE3154226540023DF27 /* TBAppDelegate.m */,
-				CBCA2CE5154226540023DF27 /* MainMenu.xib */,
 				CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */,
 				CBCA2CD7154226540023DF27 /* Supporting Files */,
 			);
@@ -103,6 +121,46 @@
 				CBCA2CDF154226540023DF27 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CBCA2CF915422D310023DF27 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CFB15422D380023DF27 /* Cells */,
+				CBCA2D0815422D970023DF27 /* LeftViewController.xib */,
+				CBCA2D0E15422E570023DF27 /* MainWindow.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CBCA2CFB15422D380023DF27 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CFC15422D500023DF27 /* ProjectCell.h */,
+				CBCA2CFD15422D500023DF27 /* ProjectCell.m */,
+				CBCA2CFE15422D500023DF27 /* ProjectCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		CBCA2D0115422D6E0023DF27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2D0215422D7E0023DF27 /* TBXCodeproject.h */,
+				CBCA2D1315422F280023DF27 /* TBXCodeproject.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CBCA2D0515422D8B0023DF27 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2D0615422D970023DF27 /* LeftViewController.h */,
+				CBCA2D0715422D970023DF27 /* LeftViewController.m */,
+				CBCA2D0B15422DDC0023DF27 /* MainWindowController.h */,
+				CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +216,9 @@
 			files = (
 				CBCA2CDB154226540023DF27 /* InfoPlist.strings in Resources */,
 				CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */,
-				CBCA2CE7154226540023DF27 /* MainMenu.xib in Resources */,
+				CBCA2D0015422D500023DF27 /* ProjectCell.xib in Resources */,
+				CBCA2D0A15422D970023DF27 /* LeftViewController.xib in Resources */,
+				CBCA2D0F15422E570023DF27 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +232,10 @@
 				CBCA2CDD154226540023DF27 /* main.m in Sources */,
 				CBCA2CE4154226540023DF27 /* TBAppDelegate.m in Sources */,
 				CBCA2CEA154226550023DF27 /* TrollBuilder.xcdatamodeld in Sources */,
+				CBCA2CFF15422D500023DF27 /* ProjectCell.m in Sources */,
+				CBCA2D0915422D970023DF27 /* LeftViewController.m in Sources */,
+				CBCA2D0D15422DDC0023DF27 /* MainWindowController.m in Sources */,
+				CBCA2D1415422F280023DF27 /* TBXCodeproject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,14 +256,6 @@
 				CBCA2CE0154226540023DF27 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		CBCA2CE5154226540023DF27 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBCA2CE6154226540023DF27 /* en */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -293,6 +349,7 @@
 				CBCA2CEF154226550023DF27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
