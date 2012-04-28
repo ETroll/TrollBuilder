@@ -10,7 +10,6 @@
 
 @implementation TBAppDelegate
 
-@synthesize window = _window;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize managedObjectContext = __managedObjectContext;
@@ -19,6 +18,9 @@
 {
     // Insert code here to initialize your application
     //NSString* test = [[NSString alloc] init];
+    mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    mainWindowController.context = [self managedObjectContext];
+    [mainWindowController showWindow:nil];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "no.altinett.TrollBuilder" in the user's Application Support directory.

@@ -13,14 +13,31 @@
 @implementation MainWindowController
 
 @synthesize splitView;
-@synthesize leftViewPlaceholder;
+@synthesize leftView;
+@synthesize rightView;
+@synthesize context;
 
+- (id)initWithWindowNibName:(NSString *)windowNibName
+{
+    self = [super initWithWindowNibName:windowNibName];
+    if (self) {
+        NSLog(@"Init");
+    }
+    return self;
+}
 
-- (void) awakeFromNib {
+- (void) windowDidLoad
+{
+    NSLog(@"Window did load");
     NSLog(@"I have awoken from my hibernation. Now where is my food?");
     leftViewController = [[ProjectListController alloc] initWithNibName:@"ProjectListView" bundle:nil];
-    leftViewController.view.frame = leftViewPlaceholder.frame;
-    [leftViewPlaceholder addSubview:leftViewController.view];
+    leftViewController.view.frame = leftView.frame;
+    [leftView addSubview:leftViewController.view];
+    [self.window display];
+}
+
+- (void) awakeFromNib {
+    
 }
 
 

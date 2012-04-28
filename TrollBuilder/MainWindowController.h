@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "ProjectListController.h"
 
-@interface MainWindowController : NSObject
+@interface MainWindowController : NSWindowController
 {
     ProjectListController* leftViewController;
 }
+
+@property (nonatomic, weak) NSManagedObjectContext* context;
+
 @property (weak) IBOutlet NSSplitView *splitView;
-@property (weak) IBOutlet NSView *leftViewPlaceholder;
+@property (weak) IBOutlet NSView *leftView;
+@property (weak) IBOutlet NSView *rightView;
 
 
 

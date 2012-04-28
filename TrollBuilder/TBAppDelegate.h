@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
 
-@interface TBAppDelegate : NSObject <NSApplicationDelegate>
+@interface TBAppDelegate : NSObject <NSApplicationDelegate> 
+{
+    MainWindowController* mainWindowController;
+}
 
-@property (assign) IBOutlet NSWindow *window;
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
