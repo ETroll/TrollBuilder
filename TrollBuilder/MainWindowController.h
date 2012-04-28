@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LeftViewController.h"
+#import "ProjectListController.h"
 
 @interface MainWindowController : NSObject
 {
-    LeftViewController* leftViewController;
+    ProjectListController* leftViewController;
 }
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSView *leftViewPlaceholder;

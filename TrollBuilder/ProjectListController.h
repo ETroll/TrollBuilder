@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LeftViewController : NSViewController
+@interface ProjectListController : NSViewController
 {
     NSMutableArray* data;
 }
@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet NSButton *addButton;
 @property (weak) IBOutlet NSButton *removeButton;
+@property (strong) IBOutlet NSTreeController *projectTree;
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;

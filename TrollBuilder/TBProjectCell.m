@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ProjectCell.h"
+#import "TBProjectCell.h"
 
-@interface ProjectCell()
+@interface TBProjectCell()
 - (void) updateDetailsText;
 @end
 
-@implementation ProjectCell
+@implementation TBProjectCell
 
 @synthesize name;
 @synthesize detailText;

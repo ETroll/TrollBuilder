@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ProjectCell : NSTableCellView
+@interface TBProjectCell : NSTableCellView
 {
 
 }

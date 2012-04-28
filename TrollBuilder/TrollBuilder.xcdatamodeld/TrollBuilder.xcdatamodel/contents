@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TBBuildConfiguration" representedClassName="TBBuildConfiguration" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="target" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="buildconfigurations" inverseEntity="TBTarget" syncable="YES"/>
+    </entity>
+    <entity name="TBProject" representedClassName="TBProject" syncable="YES">
+        <attribute name="compability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="targets" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="project" inverseEntity="TBTarget" syncable="YES"/>
+    </entity>
+    <entity name="TBTarget" representedClassName="TBTarget" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buildconfigurations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="target" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="targets" inverseEntity="TBProject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TBProject" positionX="45" positionY="144" width="128" height="90"/>
+        <element name="TBTarget" positionX="151" positionY="9" width="128" height="90"/>
+        <element name="TBBuildConfiguration" positionX="376" positionY="144" width="128" height="75"/>
+    </elements>
 </model>
