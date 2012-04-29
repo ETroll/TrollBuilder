@@ -7,11 +7,11 @@
     <entity name="TBProject" representedClassName="TBProject" syncable="YES">
         <attribute name="compability" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="targets" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="project" inverseEntity="TBTarget" syncable="YES"/>
+        <relationship name="targets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="project" inverseEntity="TBTarget" syncable="YES"/>
     </entity>
     <entity name="TBTarget" representedClassName="TBTarget" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="buildconfigurations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="target" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="buildconfigurations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="target" inverseEntity="TBBuildConfiguration" syncable="YES"/>
         <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="targets" inverseEntity="TBProject" syncable="YES"/>
     </entity>
     <elements>

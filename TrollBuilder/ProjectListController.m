@@ -8,6 +8,8 @@
 
 #import "ProjectListController.h"
 #import "TBProjectCell.h"
+#import "TBProject.h"
+
 
 @implementation ProjectListController
 
@@ -38,19 +40,22 @@
 
 - (IBAction)addButtonPressed:(id)sender {
     NSLog(@"Add");
+//    
+//    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 4", @"itemName", [NSMutableArray array], @"children", nil];
+//    NSMutableDictionary* item2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.1", @"itemName", [NSMutableArray array], @"children", nil];
+//    NSMutableDictionary* item2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2", @"itemName", [NSMutableArray array], @"children", nil];
+//    
+//    [[item1 objectForKey: @"children"] addObject: item2_1];
+//    [[item1 objectForKey: @"children"] addObject: item2_2];
+//    
+//    NSIndexPath* indexPath = [NSIndexPath indexPathWithIndex:[data count]];
+//    
+//    [projectTree insertObject:item1 atArrangedObjectIndexPath:indexPath];
+//    
     
-    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 4", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.1", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2", @"itemName", [NSMutableArray array], @"children", nil];
     
-    [[item1 objectForKey: @"children"] addObject: item2_1];
-    [[item1 objectForKey: @"children"] addObject: item2_2];
     
-    NSIndexPath* indexPath = [NSIndexPath indexPathWithIndex:[data count]];
     
-    [projectTree insertObject:item1 atArrangedObjectIndexPath:indexPath];
-    
-    //[projectTree setContent:data];
     [outlineView reloadData];
     
 }

@@ -14,7 +14,15 @@
 @interface TBTarget : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) TBBuildConfiguration *buildconfigurations;
+@property (nonatomic, retain) NSSet *buildconfigurations;
 @property (nonatomic, retain) TBProject *project;
+@end
+
+@interface TBTarget (CoreDataGeneratedAccessors)
+
+- (void)addBuildconfigurationsObject:(TBBuildConfiguration *)value;
+- (void)removeBuildconfigurationsObject:(TBBuildConfiguration *)value;
+- (void)addBuildconfigurations:(NSSet *)values;
+- (void)removeBuildconfigurations:(NSSet *)values;
 
 @end

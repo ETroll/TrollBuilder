@@ -15,6 +15,14 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * compability;
-@property (nonatomic, retain) TBTarget *targets;
+@property (nonatomic, retain) NSSet *targets;
+@end
+
+@interface TBProject (CoreDataGeneratedAccessors)
+
+- (void)addTargetsObject:(TBTarget *)value;
+- (void)removeTargetsObject:(TBTarget *)value;
+- (void)addTargets:(NSSet *)values;
+- (void)removeTargets:(NSSet *)values;
 
 @end
