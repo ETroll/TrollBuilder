@@ -14,15 +14,15 @@
 @interface TBTarget : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *buildconfigurations;
-@property (nonatomic, retain) TBProject *project;
+@property (nonatomic, retain) NSSet *children;
+@property (nonatomic, retain) TBProject *parent;
 @end
 
 @interface TBTarget (CoreDataGeneratedAccessors)
 
-- (void)addBuildconfigurationsObject:(TBBuildConfiguration *)value;
-- (void)removeBuildconfigurationsObject:(TBBuildConfiguration *)value;
-- (void)addBuildconfigurations:(NSSet *)values;
-- (void)removeBuildconfigurations:(NSSet *)values;
+- (void)addChildrenObject:(TBBuildConfiguration *)value;
+- (void)removeChildrenObject:(TBBuildConfiguration *)value;
+- (void)addChildren:(NSSet *)values;
+- (void)removeChildren:(NSSet *)values;
 
 @end

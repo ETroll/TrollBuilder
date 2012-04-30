@@ -9,7 +9,8 @@
 #import "ProjectListController.h"
 #import "TBProjectCell.h"
 #import "TBProject.h"
-
+#import "TBTarget.h"
+#import "TBXCodeProjectParser.h"
 
 @implementation ProjectListController
 
@@ -17,30 +18,23 @@
 @synthesize addButton;
 @synthesize removeButton;
 @synthesize projectTree;
+@synthesize context;
+@synthesize parentWindow;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
-        [self populateOutlineContents];
-     
     }
     
     return self;
 }
 
-- (void) awakeFromNib 
-{
-    // [projectTree setContent:data];
-    //  [outlineView reloadData];
-}
-
-
 
 - (IBAction)addButtonPressed:(id)sender {
     NSLog(@"Add");
-//    
+    
 //    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 4", @"itemName", [NSMutableArray array], @"children", nil];
 //    NSMutableDictionary* item2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.1", @"itemName", [NSMutableArray array], @"children", nil];
 //    NSMutableDictionary* item2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2", @"itemName", [NSMutableArray array], @"children", nil];
@@ -51,51 +45,71 @@
 //    NSIndexPath* indexPath = [NSIndexPath indexPathWithIndex:[data count]];
 //    
 //    [projectTree insertObject:item1 atArrangedObjectIndexPath:indexPath];
-//    
+//  
     
     
+    NSOpenPanel * panel = [NSOpenPanel openPanel];
+    
+    [panel beginSheetForDirectory:@"~/"
+                             file:nil
+                            types:[NSArray arrayWithObjects:@"xcodeproj",nil]
+                   modalForWindow:self.parentWindow
+                    modalDelegate:self
+                   didEndSelector:@selector(filePanelDidEnd:returnCode:contextInfo:)
+                      contextInfo:nil];
+    
+    
+    
+}
+
+-(void)filePanelDidEnd:(NSOpenPanel*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo {
+    NSLog(@"DID choose something");
+    
+    NSError *error= nil;
+    
+    NSString* testFile = @"~/Code/ContinousBuilder/ContinousBuilder.xcodeproj";
+    TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:[testFile stringByExpandingTildeInPath]];
+    
+    
+    TBProject *proj = [NSEntityDescription insertNewObjectForEntityForName:@"TBProject" inManagedObjectContext:self.context];
+    proj.name = project.name;
+    
+    for(TBXCodeTarget* t in project.targets) {
+        TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
+        target.name = t.name;
+        [proj addChildrenObject:target];
+    }
+    
+    if (![context save:&error]) {
+        [[NSApplication sharedApplication] presentError:error];
+    }
+    
+    
+    NSArray* targets = project.targets;
+    NSLog(@"Targets %lu", [targets count]);
     
     
     [outlineView reloadData];
-    
 }
 
 - (IBAction)removeButtonPressed:(id)sender {
     NSLog(@"Remove");
+    NSError *error= nil;
+    
+    id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
+    if([[selectedItem representedObject] isKindOfClass:[TBProject class]]) {
+        TBProject* project = (TBProject*)selectedItem;
+        [self.context deleteObject:project];
+    }
+    
+    if (![context save:&error]) {
+        [[NSApplication sharedApplication] presentError:error];
+    }else {
+         [outlineView reloadData];
+    }
 }
 
 
-#pragma mark - NSTreeController methods and support
-
-- (void) populateOutlineContents 
-{
-    // Make some fake data for our source list.
-    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 1", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.1", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2.1", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item2_2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2.2", @"itemName", [NSMutableArray array], @"children", nil];
-    NSMutableDictionary* item3 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 3", @"itemName", [NSMutableArray array], @"children", nil];
-    
-    [[item2_2 objectForKey: @"children"] addObject: item2_2_1];
-    [[item2_2 objectForKey: @"children"] addObject: item2_2_2];
-    
-    [[item2 objectForKey: @"children"] addObject: item2_1];
-    [[item2 objectForKey: @"children"] addObject: item2_2];
-    
-    NSMutableArray* dataModel = [NSMutableArray array];
-    
-    [dataModel addObject: item1];
-    [dataModel addObject: item2];
-    [dataModel addObject: item3];
-    
-    data = dataModel;
-    
-    
-    
-    //[outlineView reloadData];
-}
 
 #pragma mark - NSOutlineView delegate
 
@@ -109,27 +123,36 @@
 
 - (NSView *)outlineView:(NSOutlineView *)outlView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     // get an existing cell with the MyView identifier if it exists
-    TBProjectCell *result = [outlView makeViewWithIdentifier:@"ProjectCell" owner:self];
+    NSView* result;
     
-    // There is no existing cell to reuse so we will create a new one
-    if (result == nil) {
+    if([[item representedObject] isKindOfClass:[TBProject class]]) {
+        TBProjectCell *cell = [outlView makeViewWithIdentifier:@"ProjectCell" owner:self];
         
-        // create the new NSTextField with a frame of the {0,0} with the width of the table
-        // note that the height of the frame is not really relevant, the row-height will modify the height
-        // the new text field is then returned as an autoreleased object
-        result = [[TBProjectCell alloc] initWithFrame:NSMakeRect(0, 0, 244, 36)];
+        // There is no existing cell to reuse so we will create a new one
+        if (cell == nil) {
+            cell = [[TBProjectCell alloc] initWithFrame:NSMakeRect(0, 0, 244, 36)];
+            cell.identifier = @"ProjectCell";
+        }
+        TBProject* info = [item representedObject];
+        cell.name.stringValue = info.name;
+        cell.detailText.stringValue = [NSString stringWithFormat:@"%d targets, Mac OSX SDK 10.7", [info.children count]];
+        result = cell;
         
-        // the identifier of the NSTextField instance is set to MyView. This
-        // allows it to be re-used
-        result.identifier = @"ProjectCell";
+    }else {
+        NSTableCellView *cell = [outlView makeViewWithIdentifier:@"NormalCell" owner:self];
+        
+        // There is no existing cell to reuse so we will create a new one
+        if (cell == nil) {
+            cell = [[NSTableCellView alloc] initWithFrame:NSMakeRect(0, 0, 244, 36)];
+            cell.identifier = @"NormalCell";
+        }
+        TBTarget* info = [item representedObject];
+        cell.textField.stringValue = info.name;
+        
+        result = cell;
     }
     
-    // result is now guaranteed to be valid, either as a re-used cell
-    // or as a new cell, so set the stringValue of the cell to the
-    // nameArray value at row
-    NSDictionary* info = [item representedObject];
-    result.name.stringValue = [info objectForKey:@"itemName"];
-    //result.textField.stringValue = @"Jalla";
+    
     
     // return the result.
     return result;
@@ -138,7 +161,12 @@
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
 {
-    return 36.0f;
+    if([[item representedObject] isKindOfClass:[TBProject class]]) {
+        return 30.0f;
+    }
+    else {
+        return 17.0f;
+    }
 }
 
 @end

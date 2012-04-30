@@ -2,21 +2,27 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TBBuildConfiguration" representedClassName="TBBuildConfiguration" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="target" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="buildconfigurations" inverseEntity="TBTarget" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="children" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="children" inverseEntity="TBTarget" syncable="YES"/>
+    </entity>
+    <entity name="TBMenuItem" syncable="YES">
+        <relationship name="childen" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBMenuItem" inverseName="parent" inverseEntity="TBMenuItem" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBMenuItem" inverseName="childen" inverseEntity="TBMenuItem" syncable="YES"/>
     </entity>
     <entity name="TBProject" representedClassName="TBProject" syncable="YES">
         <attribute name="compability" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="targets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="project" inverseEntity="TBTarget" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="parent" inverseEntity="TBTarget" syncable="YES"/>
     </entity>
     <entity name="TBTarget" representedClassName="TBTarget" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="buildconfigurations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="target" inverseEntity="TBBuildConfiguration" syncable="YES"/>
-        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="targets" inverseEntity="TBProject" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="parent" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="children" inverseEntity="TBProject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TBProject" positionX="45" positionY="144" width="128" height="90"/>
-        <element name="TBTarget" positionX="151" positionY="9" width="128" height="90"/>
-        <element name="TBBuildConfiguration" positionX="376" positionY="144" width="128" height="75"/>
+        <element name="TBProject" positionX="-36" positionY="153" width="128" height="90"/>
+        <element name="TBTarget" positionX="178" positionY="-27" width="128" height="90"/>
+        <element name="TBBuildConfiguration" positionX="376" positionY="144" width="128" height="90"/>
+        <element name="TBMenuItem" positionX="-54" positionY="-93" width="128" height="75"/>
     </elements>
 </model>

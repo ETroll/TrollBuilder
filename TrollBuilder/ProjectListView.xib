@@ -50,7 +50,11 @@
 					<string>itemName</string>
 				</array>
 				<bool key="NSEditable">YES</bool>
-				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
+				<bool key="NSAutomaticallyPreparesContent">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy">
+					<string key="NSEntityName">TBProject</string>
+				</object>
+				<bool key="_NSIsUsingManagedProxy">YES</bool>
 				<bool key="NSAvoidsEmptySelection">YES</bool>
 				<bool key="NSPreservesSelection">YES</bool>
 				<bool key="NSSelectsInsertedObjects">YES</bool>
@@ -283,7 +287,7 @@
 											</object>
 										</object>
 										<double key="NSRowHeight">17</double>
-										<int key="NSTvFlags">440401920</int>
+										<int key="NSTvFlags">306184192</int>
 										<reference key="NSDelegate"/>
 										<reference key="NSDataSource"/>
 										<int key="NSColumnAutoresizingStyle">5</int>
@@ -566,19 +570,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: data</string>
+						<string key="label">managedObjectContext: context</string>
 						<reference key="source" ref="491010926"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="491010926"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentArray: data</string>
-							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">data</string>
+							<string key="NSLabel">managedObjectContext: context</string>
+							<string key="NSBinding">managedObjectContext</string>
+							<string key="NSKeyPath">context</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">134</int>
+					<int key="connectionID">171</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -598,7 +602,7 @@
 										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 										<string>NeXT TIFF v4.0 pasteboard type</string>
 									</set>
-									<string key="NSFrame">{{3, 5}, {26, 26}}</string>
+									<string key="NSFrame">{{3, 5}, {20, 20}}</string>
 									<reference key="NSSuperview" ref="204786570"/>
 									<reference key="NSNextKeyView" ref="890768193"/>
 									<string key="NSReuseIdentifierKey">_NS:75</string>
@@ -629,7 +633,7 @@
 										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 										<string>NeXT TIFF v4.0 pasteboard type</string>
 									</set>
-									<string key="NSFrame">{{201, 10}, {16, 16}}</string>
+									<string key="NSFrame">{{199, 7}, {16, 16}}</string>
 									<reference key="NSSuperview" ref="204786570"/>
 									<reference key="NSNextKeyView" ref="58288180"/>
 									<string key="NSReuseIdentifierKey">_NS:75</string>
@@ -652,7 +656,7 @@
 								<object class="NSTextField" id="890768193">
 									<reference key="NSNextResponder" ref="204786570"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{34, 20}, {156, 17}}</string>
+									<string key="NSFrame">{{28, 14}, {156, 17}}</string>
 									<reference key="NSSuperview" ref="204786570"/>
 									<reference key="NSNextKeyView" ref="717713548"/>
 									<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -675,7 +679,7 @@
 								<object class="NSTextField" id="717713548">
 									<reference key="NSNextResponder" ref="204786570"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{34, -1}, {156, 17}}</string>
+									<string key="NSFrame">{{28, -2}, {156, 17}}</string>
 									<reference key="NSSuperview" ref="204786570"/>
 									<reference key="NSNextKeyView" ref="740556303"/>
 									<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -696,7 +700,7 @@
 									</object>
 								</object>
 							</array>
-							<string key="NSFrame">{{0, 34}, {240, 36}}</string>
+							<string key="NSFrame">{{0, 34}, {240, 30}}</string>
 							<reference key="NSNextKeyView" ref="631034506"/>
 						</object>
 						<reference key="destination" ref="717713548"/>
@@ -855,10 +859,10 @@
 						<int key="objectID">137</int>
 						<reference key="object" ref="204786570"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="631034506"/>
-							<reference ref="740556303"/>
-							<reference ref="890768193"/>
 							<reference ref="717713548"/>
+							<reference ref="631034506"/>
+							<reference ref="890768193"/>
+							<reference ref="740556303"/>
 						</array>
 						<reference key="parent" ref="179914496"/>
 					</object>
@@ -1031,7 +1035,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">158</int>
+			<int key="maxID">171</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

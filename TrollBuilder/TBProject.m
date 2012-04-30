@@ -14,6 +14,6 @@
 
 @dynamic name;
 @dynamic compability;
-@dynamic targets;
+@dynamic children;
 
 @end

@@ -7,11 +7,14 @@
 //
 
 #import "TBBuildConfiguration.h"
+#import "TBBuildConfiguration.h"
 #import "TBTarget.h"
+
 
 @implementation TBBuildConfiguration
 
 @dynamic name;
-@dynamic target;
+@dynamic parent;
+@dynamic children;
 
 @end

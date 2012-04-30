@@ -14,7 +14,7 @@
 @implementation TBTarget
 
 @dynamic name;
-@dynamic buildconfigurations;
-@dynamic project;
+@dynamic children;
+@dynamic parent;
 
 @end
