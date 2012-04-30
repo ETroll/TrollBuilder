@@ -32,6 +32,7 @@
     NSLog(@"I have awoken from my hibernation. Now where is my food?");
     leftViewController = [[ProjectListController alloc] initWithNibName:@"ProjectListView" bundle:nil];
     leftViewController.context = self.context;
+    leftViewController.parentWindow = self.window;
     leftViewController.view.frame = leftView.frame;
     [leftView addSubview:leftViewController.view];
     [self.window display];

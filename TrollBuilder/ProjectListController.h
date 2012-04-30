@@ -13,7 +13,7 @@
     NSMutableArray* data;
 }
 @property (weak, nonatomic) NSManagedObjectContext* context;
-@property (weak, nonatomic) NSWindow* parentWindow;
+@property (strong, nonatomic) NSWindow* parentWindow;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet NSButton *addButton;

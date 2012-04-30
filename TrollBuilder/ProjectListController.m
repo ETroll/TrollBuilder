@@ -49,47 +49,43 @@
     
     
     NSOpenPanel * panel = [NSOpenPanel openPanel];
+    [panel setDirectoryURL:[NSURL URLWithString:@"~/"]];
+    [panel setAllowedFileTypes:[NSArray arrayWithObjects:@"xcodeproj",nil]];
+    [panel setAllowsMultipleSelection:NO];
+    [panel beginSheetModalForWindow:self.parentWindow completionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            NSLog(@"DID choose something");
+            
+            NSError *error= nil;
+            
+            NSString* file = [[panel URL] path];
+            
+            //NSString* testFile = @"~/Code/ContinousBuilder/ContinousBuilder.xcodeproj";
+            TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:file];
+            
+            
+            TBProject *proj = [NSEntityDescription insertNewObjectForEntityForName:@"TBProject" inManagedObjectContext:self.context];
+            proj.name = project.name;
+            
+            for(TBXCodeTarget* t in project.targets) {
+                TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
+                target.name = t.name;
+                [proj addChildrenObject:target];
+            }
+            
+            if (![context save:&error]) {
+                [[NSApplication sharedApplication] presentError:error];
+            }
+            
+            
+            NSArray* targets = project.targets;
+            NSLog(@"Targets %lu", [targets count]);
+            
+            
+            [outlineView reloadData];
+        }
+    }];
     
-    [panel beginSheetForDirectory:@"~/"
-                             file:nil
-                            types:[NSArray arrayWithObjects:@"xcodeproj",nil]
-                   modalForWindow:self.parentWindow
-                    modalDelegate:self
-                   didEndSelector:@selector(filePanelDidEnd:returnCode:contextInfo:)
-                      contextInfo:nil];
-    
-    
-    
-}
-
--(void)filePanelDidEnd:(NSOpenPanel*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo {
-    NSLog(@"DID choose something");
-    
-    NSError *error= nil;
-    
-    NSString* testFile = @"~/Code/ContinousBuilder/ContinousBuilder.xcodeproj";
-    TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:[testFile stringByExpandingTildeInPath]];
-    
-    
-    TBProject *proj = [NSEntityDescription insertNewObjectForEntityForName:@"TBProject" inManagedObjectContext:self.context];
-    proj.name = project.name;
-    
-    for(TBXCodeTarget* t in project.targets) {
-        TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
-        target.name = t.name;
-        [proj addChildrenObject:target];
-    }
-    
-    if (![context save:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-    }
-    
-    
-    NSArray* targets = project.targets;
-    NSLog(@"Targets %lu", [targets count]);
-    
-    
-    [outlineView reloadData];
 }
 
 - (IBAction)removeButtonPressed:(id)sender {
