@@ -2,7 +2,7 @@
 //  TBProject.h
 //  TrollBuilder
 //
-//  Created by Karl Løland on 4/29/12.
+//  Created by Karl Løland on 5/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface TBProject : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * compability;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * filepath;
 @property (nonatomic, retain) NSSet *children;
 @end
 

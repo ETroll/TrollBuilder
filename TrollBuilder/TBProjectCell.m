@@ -10,25 +10,43 @@
 
 @interface TBProjectCell()
 - (void) updateDetailsText;
+- (void) setupDefaults;
 @end
 
 @implementation TBProjectCell
 
 @synthesize name;
 @synthesize detailText;
+@synthesize errorIcon;
+
 @synthesize targets = _targets;
 @synthesize sdkDescription = _sdkDescription;
+@synthesize hasErrors = _hasErrors;
+@synthesize hasWarnings = _hasWarnings;
 
 - (id)init {
     self = [super init];
     if (self) {
-        _targets = 0;
-        _sdkDescription = @"missing base SDK";
+        [self setupDefaults];
     }
     return self;
 }
 
-- (void) updateDetailsText {
+- (void) awakeFromNib
+{
+    [self setupDefaults];
+}
+- (void) setupDefaults
+{
+    _targets = 0;
+    _sdkDescription = @"missing base SDK";
+    _hasErrors = NO;
+    _hasWarnings = NO;
+    self.errorIcon.image = nil;
+}
+
+- (void) updateDetailsText 
+{
     if(_targets > 1) {
         self.detailText.stringValue = [NSString stringWithFormat:@"%d targets, %@", _targets, _sdkDescription];
     }else {
@@ -36,7 +54,8 @@
     }
     
 }
-- (void) setTargets:(int)targets {
+- (void) setTargets:(int)targets 
+{
     @synchronized(self)
     {
         _targets = targets;
@@ -44,11 +63,37 @@
     }
     
 }
-- (void)setSdkDescription:(NSString *)sdkDescription{
+- (void)setHasErrors:(BOOL)hasErrors
+{
     @synchronized(self)
     {
-        _sdkDescription = sdkDescription;
-        [self updateDetailsText];
+        if(hasErrors) {
+            //Set error icon
+            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconRedSmall.png"];
+        }else if(!hasErrors && _hasWarnings) {
+            //Replace with warning icon
+            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconSmall.png"];
+        }else {
+            //Remove icon
+            self.errorIcon.image = nil;
+        }
+        _hasErrors = hasErrors;
     }
 }
+
+- (void) setHasWarnings:(BOOL)hasWarnings
+{
+    @synchronized(self)
+    {
+        if(hasWarnings && !_hasErrors) {
+            //Set warning icon
+            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconSmall.png"];
+        }else if(!hasWarnings && !_hasErrors) {
+            //Remove warning icon
+             self.errorIcon.image = nil;
+        }
+        _hasWarnings = hasWarnings;
+    }
+}
+
 @end

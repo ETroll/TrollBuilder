@@ -66,6 +66,7 @@
             
             TBProject *proj = [NSEntityDescription insertNewObjectForEntityForName:@"TBProject" inManagedObjectContext:self.context];
             proj.name = project.name;
+            proj.filepath = file;
             
             for(TBXCodeTarget* t in project.targets) {
                 TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
@@ -92,13 +93,15 @@
     NSLog(@"Remove");
     NSError *error= nil;
     
-    id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
-    if([[selectedItem representedObject] isKindOfClass:[TBProject class]]) {
-        TBProject* project = (TBProject*)selectedItem;
-        [self.context deleteObject:project];
+    NSTreeNode *node = [[projectTree selectedNodes] objectAtIndex: 0];
+
+    
+    if([[node representedObject] isKindOfClass:[TBProject class]]) {
+        //TBProject* project = (TBProject*)[node representedObject];
+        [projectTree removeObjectAtArrangedObjectIndexPath:[node indexPath]];         
     }
     
-    if (![context save:&error]) {
+    if (![self.context save:&error]) {
         [[NSApplication sharedApplication] presentError:error];
     }else {
          [outlineView reloadData];
@@ -131,7 +134,7 @@
         }
         TBProject* info = [item representedObject];
         cell.name.stringValue = info.name;
-        cell.detailText.stringValue = [NSString stringWithFormat:@"%d targets, Mac OSX SDK 10.7", [info.children count]];
+        cell.targets = [info.children count];
         result = cell;
         
     }else {

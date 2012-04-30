@@ -14,7 +14,11 @@
 }
 @property (weak) IBOutlet NSTextField *name;
 @property (weak) IBOutlet NSTextField *detailText;
+@property (weak) IBOutlet NSImageView *errorIcon;
+
 @property (nonatomic) int targets;
 @property (nonatomic, strong) NSString* sdkDescription;
+@property (nonatomic) BOOL hasErrors;
+@property (nonatomic) BOOL hasWarnings;
 
 @end
