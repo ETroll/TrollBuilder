@@ -4,7 +4,4 @@
    <FileRef
       location = "container:TrollBuilder.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:TrollHTTPServer.xcodeproj">
-   </FileRef>
 </Workspace>

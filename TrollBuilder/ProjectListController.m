@@ -32,7 +32,38 @@
 }
 
 
-- (IBAction)addButtonPressed:(id)sender {
+- (void) refreshProjectWithPath:(TBProject*)managedProject
+{
+    if([[NSFileManager defaultManager] fileExistsAtPath:managedProject.filepath])
+    {
+        TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:managedProject.filepath];
+        NSError* error = nil;
+        
+        managedProject.name = project.name;
+        [managedProject removeChildren:managedProject.children];
+        
+        for(TBXCodeTarget* t in project.targets) {
+            TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
+            target.name = t.name;
+            target.isTest = [NSNumber numberWithBool:t.isTestBundle];
+            target.isApplication = [NSNumber numberWithBool:t.isApplication];
+            [managedProject addChildrenObject:target];
+        }
+        
+        if (![self.context save:&error]) {
+            [[NSApplication sharedApplication] presentError:error];
+        }
+    }
+    else 
+    {
+        //TODO:
+        //Display fatal warning!
+    }
+    
+}
+
+- (IBAction)addButtonPressed:(id)sender 
+{
     NSLog(@"Add");
     
 //    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 4", @"itemName", [NSMutableArray array], @"children", nil];
@@ -71,6 +102,8 @@
             for(TBXCodeTarget* t in project.targets) {
                 TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
                 target.name = t.name;
+                target.isTest = [NSNumber numberWithBool:t.isTestBundle];
+                target.isApplication = [NSNumber numberWithBool:t.isApplication];
                 [proj addChildrenObject:target];
             }
             
@@ -135,6 +168,12 @@
         TBProject* info = [item representedObject];
         cell.name.stringValue = info.name;
         cell.targets = [info.children count];
+        if(![[NSFileManager defaultManager] fileExistsAtPath:info.filepath])
+        {
+            NSImage* statusImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WarningSignIconSmall" ofType:@"png"]];
+            [statusImage setSize:NSMakeSize(16, 16)];
+            cell.errorIcon.image = statusImage;
+        }
         result = cell;
         
     }else {
@@ -147,6 +186,24 @@
         }
         TBTarget* info = [item representedObject];
         cell.textField.stringValue = info.name;
+        
+        NSImage* targetIcon = nil;
+        
+        if([info.isApplication boolValue])
+        {
+            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ApplicationIcon" ofType:@"icns"]];
+        }
+        else if([info.isTest boolValue])
+        {
+            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UnitTestIcon" ofType:@"icns"]];
+        }
+        else
+        {
+            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BundleIcon" ofType:@"icns"]];
+        }
+        
+        [targetIcon setSize:NSMakeSize(17, 17)];
+        cell.imageView.image = targetIcon;
         
         result = cell;
     }

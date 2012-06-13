@@ -22,5 +22,6 @@
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;
+- (void) refreshProjectWithPath:(NSString*)path;
 
 @end

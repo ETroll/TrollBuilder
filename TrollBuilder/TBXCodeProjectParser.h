@@ -8,12 +8,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TBXCodeTarget.h"
+#import "TBXCodeBuildConfiguration.h"
 
-@interface TBXCodeTarget : NSObject
-@property (strong, nonatomic) NSArray* buildConfigurations;
-@property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* key;
-@end
 
 @interface TBXCodeProjectParser : NSObject
 {

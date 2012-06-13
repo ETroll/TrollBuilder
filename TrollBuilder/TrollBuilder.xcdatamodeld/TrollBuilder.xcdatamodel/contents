@@ -19,6 +19,8 @@
         <relationship name="warnings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBWarning" inverseName="project" inverseEntity="TBWarning" syncable="YES"/>
     </entity>
     <entity name="TBTarget" representedClassName="TBTarget" syncable="YES">
+        <attribute name="isApplication" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isTest" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TBBuildConfiguration" inverseName="parent" inverseEntity="TBBuildConfiguration" syncable="YES"/>
         <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="children" inverseEntity="TBProject" syncable="YES"/>
@@ -30,9 +32,9 @@
     </entity>
     <elements>
         <element name="TBBuildConfiguration" positionX="223" positionY="180" width="128" height="90"/>
-        <element name="TBProject" positionX="-36" positionY="153" width="128" height="135"/>
-        <element name="TBTarget" positionX="178" positionY="-27" width="128" height="90"/>
-        <element name="TBWarning" positionX="142" positionY="-144" width="128" height="90"/>
         <element name="TBError" positionX="-29" positionY="-144" width="128" height="90"/>
+        <element name="TBProject" positionX="-36" positionY="153" width="128" height="135"/>
+        <element name="TBTarget" positionX="178" positionY="-27" width="128" height="120"/>
+        <element name="TBWarning" positionX="142" positionY="-144" width="128" height="90"/>
     </elements>
 </model>

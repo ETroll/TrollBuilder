@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB30CB4615854A7900125C62 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB30CB4515854A7900125C62 /* SenTestingKit.framework */; };
+		CB30CB4715854A7900125C62 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA2CD0154226540023DF27 /* Cocoa.framework */; };
+		CB30CB4D15854A7900125C62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB30CB4B15854A7900125C62 /* InfoPlist.strings */; };
+		CB30CB5015854A7900125C62 /* TrollBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB30CB4F15854A7900125C62 /* TrollBuilderTests.m */; };
 		CB3A4A8D154F49A00022ACD1 /* TBProject.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3A4A8C154F49A00022ACD1 /* TBProject.m */; };
 		CB3A4A90154F4D570022ACD1 /* WarningSignIconRedSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3A4A8F154F4D570022ACD1 /* WarningSignIconRedSmall.png */; };
+		CB7E7445157E0885009A2F78 /* TBXCodeTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E7444157E0885009A2F78 /* TBXCodeTarget.m */; };
+		CB7E7449157E08C4009A2F78 /* TBXCodeBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E7448157E08C4009A2F78 /* TBXCodeBuildConfiguration.m */; };
+		CB7E7453157E1361009A2F78 /* UnitTestIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB7E7452157E1361009A2F78 /* UnitTestIcon.icns */; };
+		CB7E7455157E1385009A2F78 /* ApplicationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB7E7454157E1385009A2F78 /* ApplicationIcon.icns */; };
+		CB7E7458157E14B4009A2F78 /* TBTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E7457157E14B4009A2F78 /* TBTarget.m */; };
+		CB7E745A157E1535009A2F78 /* BundleIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB7E7459157E1535009A2F78 /* BundleIcon.icns */; };
 		CB8830D5154CB08E0066F01F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8830D4154CB08E0066F01F /* MainWindow.xib */; };
-		CB8830DE154D7C690066F01F /* TBTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8830DD154D7C690066F01F /* TBTarget.m */; };
 		CB8830E4154D7C820066F01F /* TBBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8830E3154D7C820066F01F /* TBBuildConfiguration.m */; };
+		CB9C195815891B1600F8C36A /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = CB9C195715891B1600F8C36A /* project.pbxproj */; };
 		CBCA2CD1154226540023DF27 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA2CD0154226540023DF27 /* Cocoa.framework */; };
 		CBCA2CDB154226540023DF27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CD9154226540023DF27 /* InfoPlist.strings */; };
 		CBCA2CDD154226540023DF27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CDC154226540023DF27 /* main.m */; };
-		CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2CDF154226540023DF27 /* Credits.rtf */; };
 		CBCA2CE4154226540023DF27 /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE3154226540023DF27 /* TBAppDelegate.m */; };
 		CBCA2CEA154226550023DF27 /* TrollBuilder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */; };
 		CBCA2CFF15422D500023DF27 /* TBProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2CFD15422D500023DF27 /* TBProjectCell.m */; };
@@ -24,19 +33,36 @@
 		CBCA2D0D15422DDC0023DF27 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */; };
 		CBCA2D0F15422E570023DF27 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2D0E15422E570023DF27 /* MainMenu.xib */; };
 		CBCA2D1415422F280023DF27 /* TBXCodeProjectParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D1315422F280023DF27 /* TBXCodeProjectParser.m */; };
+		CBD07916158219B70080840F /* TBBuildQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD07915158219B70080840F /* TBBuildQueue.m */; };
 		CBF693F1154C448300F6D4AC /* WarningSignIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CBF693F0154C448300F6D4AC /* WarningSignIconSmall.png */; };
 		CBF693F3154C44AA00F6D4AC /* xcode-project_Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CBF693F2154C44AA00F6D4AC /* xcode-project_Icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB30CB3C1585498A00125C62 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
+		CB30CB4415854A7900125C62 /* TrollBuilderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrollBuilderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB30CB4515854A7900125C62 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CB30CB4A15854A7900125C62 /* TrollBuilderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrollBuilderTests-Info.plist"; sourceTree = "<group>"; };
+		CB30CB4C15854A7900125C62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CB30CB4E15854A7900125C62 /* TrollBuilderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrollBuilderTests.h; sourceTree = "<group>"; };
+		CB30CB4F15854A7900125C62 /* TrollBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrollBuilderTests.m; sourceTree = "<group>"; };
+		CB30CB5115854A7900125C62 /* TrollBuilderTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrollBuilderTests-Prefix.pch"; sourceTree = "<group>"; };
 		CB3A4A8B154F49A00022ACD1 /* TBProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBProject.h; sourceTree = "<group>"; };
 		CB3A4A8C154F49A00022ACD1 /* TBProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBProject.m; sourceTree = "<group>"; };
 		CB3A4A8F154F4D570022ACD1 /* WarningSignIconRedSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WarningSignIconRedSmall.png; path = Resources/Graphics/WarningSignIconRedSmall.png; sourceTree = SOURCE_ROOT; };
+		CB7E7443157E0885009A2F78 /* TBXCodeTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXCodeTarget.h; sourceTree = "<group>"; };
+		CB7E7444157E0885009A2F78 /* TBXCodeTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXCodeTarget.m; sourceTree = "<group>"; };
+		CB7E7447157E08C4009A2F78 /* TBXCodeBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXCodeBuildConfiguration.h; sourceTree = "<group>"; };
+		CB7E7448157E08C4009A2F78 /* TBXCodeBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXCodeBuildConfiguration.m; sourceTree = "<group>"; };
+		CB7E7452157E1361009A2F78 /* UnitTestIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = UnitTestIcon.icns; path = Resources/Icons/UnitTestIcon.icns; sourceTree = SOURCE_ROOT; };
+		CB7E7454157E1385009A2F78 /* ApplicationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ApplicationIcon.icns; path = Resources/Icons/ApplicationIcon.icns; sourceTree = SOURCE_ROOT; };
+		CB7E7456157E14B4009A2F78 /* TBTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTarget.h; sourceTree = "<group>"; };
+		CB7E7457157E14B4009A2F78 /* TBTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTarget.m; sourceTree = "<group>"; };
+		CB7E7459157E1535009A2F78 /* BundleIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = BundleIcon.icns; path = Resources/Icons/BundleIcon.icns; sourceTree = SOURCE_ROOT; };
 		CB8830D4154CB08E0066F01F /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		CB8830DC154D7C680066F01F /* TBTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTarget.h; sourceTree = "<group>"; };
-		CB8830DD154D7C690066F01F /* TBTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTarget.m; sourceTree = "<group>"; };
 		CB8830E2154D7C820066F01F /* TBBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBBuildConfiguration.h; sourceTree = "<group>"; };
 		CB8830E3154D7C820066F01F /* TBBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBBuildConfiguration.m; sourceTree = "<group>"; };
+		CB9C195715891B1600F8C36A /* project.pbxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = Resources/Data/project.pbxproj; sourceTree = SOURCE_ROOT; };
 		CBCA2CCC154226540023DF27 /* TrollBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrollBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA2CD0154226540023DF27 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CBCA2CD3154226540023DF27 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -46,7 +72,6 @@
 		CBCA2CDA154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBCA2CDC154226540023DF27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBCA2CDE154226540023DF27 /* TrollBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrollBuilder-Prefix.pch"; sourceTree = "<group>"; };
-		CBCA2CE0154226540023DF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		CBCA2CE2154226540023DF27 /* TBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBAppDelegate.h; sourceTree = "<group>"; };
 		CBCA2CE3154226540023DF27 /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
 		CBCA2CE9154226540023DF27 /* TrollBuilder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrollBuilder.xcdatamodel; sourceTree = "<group>"; };
@@ -60,11 +85,22 @@
 		CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		CBCA2D0E15422E570023DF27 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		CBCA2D1315422F280023DF27 /* TBXCodeProjectParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXCodeProjectParser.m; sourceTree = "<group>"; };
+		CBD07914158219B70080840F /* TBBuildQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBBuildQueue.h; sourceTree = "<group>"; };
+		CBD07915158219B70080840F /* TBBuildQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBBuildQueue.m; sourceTree = "<group>"; };
 		CBF693F0154C448300F6D4AC /* WarningSignIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WarningSignIconSmall.png; path = Resources/Graphics/WarningSignIconSmall.png; sourceTree = SOURCE_ROOT; };
 		CBF693F2154C44AA00F6D4AC /* xcode-project_Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "xcode-project_Icon.icns"; path = "Resources/Icons/xcode-project_Icon.icns"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CB30CB4015854A7900125C62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB30CB4615854A7900125C62 /* SenTestingKit.framework in Frameworks */,
+				CB30CB4715854A7900125C62 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBCA2CC9154226540023DF27 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,6 +112,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB30CB39158545BC00125C62 /* Cocoa UI */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CFB15422D380023DF27 /* Custom Cells */,
+				CB8830CF154CA50E0066F01F /* Views */,
+				CBCA2D0515422D8B0023DF27 /* ViewControllers */,
+			);
+			name = "Cocoa UI";
+			sourceTree = "<group>";
+		};
+		CB30CB3B158545ED00125C62 /* Data Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2D0115422D6E0023DF27 /* Core Data */,
+			);
+			name = "Data Storage";
+			sourceTree = "<group>";
+		};
+		CB30CB3E158549ED00125C62 /* Testdata */ = {
+			isa = PBXGroup;
+			children = (
+				CB9C195715891B1600F8C36A /* project.pbxproj */,
+			);
+			name = Testdata;
+			sourceTree = "<group>";
+		};
+		CB30CB4815854A7900125C62 /* TrollBuilderTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB30CB4E15854A7900125C62 /* TrollBuilderTests.h */,
+				CB30CB4F15854A7900125C62 /* TrollBuilderTests.m */,
+				CB30CB4915854A7900125C62 /* Supporting Files */,
+			);
+			path = TrollBuilderTests;
+			sourceTree = "<group>";
+		};
+		CB30CB4915854A7900125C62 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB30CB4A15854A7900125C62 /* TrollBuilderTests-Info.plist */,
+				CB30CB4B15854A7900125C62 /* InfoPlist.strings */,
+				CB30CB5115854A7900125C62 /* TrollBuilderTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		CB8830CF154CA50E0066F01F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,19 +168,24 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		CB8830E9154D85890066F01F /* Parsers */ = {
+		CB8830E9154D85890066F01F /* XCode Project Parser */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2D0215422D7E0023DF27 /* TBXCodeProjectParser.h */,
 				CBCA2D1315422F280023DF27 /* TBXCodeProjectParser.m */,
+				CB7E7443157E0885009A2F78 /* TBXCodeTarget.h */,
+				CB7E7444157E0885009A2F78 /* TBXCodeTarget.m */,
+				CB7E7447157E08C4009A2F78 /* TBXCodeBuildConfiguration.h */,
+				CB7E7448157E08C4009A2F78 /* TBXCodeBuildConfiguration.m */,
 			);
-			name = Parsers;
+			name = "XCode Project Parser";
 			sourceTree = "<group>";
 		};
 		CBCA2CC1154226540023DF27 = {
 			isa = PBXGroup;
 			children = (
 				CBCA2CD6154226540023DF27 /* TrollBuilder */,
+				CB30CB4815854A7900125C62 /* TrollBuilderTests */,
 				CBCA2CCF154226540023DF27 /* Frameworks */,
 				CBCA2CCD154226540023DF27 /* Products */,
 			);
@@ -108,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCA2CCC154226540023DF27 /* TrollBuilder.app */,
+				CB30CB4415854A7900125C62 /* TrollBuilderTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCA2CD0154226540023DF27 /* Cocoa.framework */,
+				CB30CB4515854A7900125C62 /* SenTestingKit.framework */,
 				CBCA2CD2154226540023DF27 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -134,13 +223,13 @@
 		CBCA2CD6154226540023DF27 /* TrollBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				CBF693ED154C445800F6D4AC /* Resources */,
-				CBCA2CFB15422D380023DF27 /* Cells */,
-				CB8830E9154D85890066F01F /* Parsers */,
-				CBCA2D0515422D8B0023DF27 /* Controllers */,
-				CBCA2D0115422D6E0023DF27 /* Models */,
 				CBCA2CE2154226540023DF27 /* TBAppDelegate.h */,
 				CBCA2CE3154226540023DF27 /* TBAppDelegate.m */,
+				CBF693ED154C445800F6D4AC /* Resources */,
+				CB30CB3B158545ED00125C62 /* Data Storage */,
+				CB30CB39158545BC00125C62 /* Cocoa UI */,
+				CB8830E9154D85890066F01F /* XCode Project Parser */,
+				CBD07913158218B20080840F /* XCode Project Build System */,
 				CBCA2CD7154226540023DF27 /* Supporting Files */,
 			);
 			path = TrollBuilder;
@@ -149,39 +238,39 @@
 		CBCA2CD7154226540023DF27 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB30CB3C1585498A00125C62 /* README */,
 				CBCA2CD8154226540023DF27 /* TrollBuilder-Info.plist */,
 				CBCA2CD9154226540023DF27 /* InfoPlist.strings */,
 				CBCA2CDC154226540023DF27 /* main.m */,
 				CBCA2CDE154226540023DF27 /* TrollBuilder-Prefix.pch */,
-				CBCA2CDF154226540023DF27 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CBCA2CFB15422D380023DF27 /* Cells */ = {
+		CBCA2CFB15422D380023DF27 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2CFC15422D500023DF27 /* TBProjectCell.h */,
 				CBCA2CFD15422D500023DF27 /* TBProjectCell.m */,
 			);
-			name = Cells;
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
-		CBCA2D0115422D6E0023DF27 /* Models */ = {
+		CBCA2D0115422D6E0023DF27 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2CE8154226540023DF27 /* TrollBuilder.xcdatamodeld */,
+				CB7E7456157E14B4009A2F78 /* TBTarget.h */,
+				CB7E7457157E14B4009A2F78 /* TBTarget.m */,
 				CB3A4A8B154F49A00022ACD1 /* TBProject.h */,
 				CB3A4A8C154F49A00022ACD1 /* TBProject.m */,
-				CB8830DC154D7C680066F01F /* TBTarget.h */,
-				CB8830DD154D7C690066F01F /* TBTarget.m */,
 				CB8830E2154D7C820066F01F /* TBBuildConfiguration.h */,
 				CB8830E3154D7C820066F01F /* TBBuildConfiguration.m */,
 			);
-			name = Models;
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
-		CBCA2D0515422D8B0023DF27 /* Controllers */ = {
+		CBCA2D0515422D8B0023DF27 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2D0615422D970023DF27 /* ProjectListController.h */,
@@ -189,14 +278,23 @@
 				CBCA2D0B15422DDC0023DF27 /* MainWindowController.h */,
 				CBCA2D0C15422DDC0023DF27 /* MainWindowController.m */,
 			);
-			name = Controllers;
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CBD07913158218B20080840F /* XCode Project Build System */ = {
+			isa = PBXGroup;
+			children = (
+				CBD07914158219B70080840F /* TBBuildQueue.h */,
+				CBD07915158219B70080840F /* TBBuildQueue.m */,
+			);
+			name = "XCode Project Build System";
 			sourceTree = "<group>";
 		};
 		CBF693ED154C445800F6D4AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB30CB3E158549ED00125C62 /* Testdata */,
 				CBF693EF154C446100F6D4AC /* Icons */,
-				CB8830CF154CA50E0066F01F /* Views */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -204,6 +302,9 @@
 		CBF693EF154C446100F6D4AC /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CB7E7459157E1535009A2F78 /* BundleIcon.icns */,
+				CB7E7454157E1385009A2F78 /* ApplicationIcon.icns */,
+				CB7E7452157E1361009A2F78 /* UnitTestIcon.icns */,
 				CB3A4A8F154F4D570022ACD1 /* WarningSignIconRedSmall.png */,
 				CBF693F0154C448300F6D4AC /* WarningSignIconSmall.png */,
 				CBF693F2154C44AA00F6D4AC /* xcode-project_Icon.icns */,
@@ -214,6 +315,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CB30CB4315854A7900125C62 /* TrollBuilderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB30CB5215854A7900125C62 /* Build configuration list for PBXNativeTarget "TrollBuilderTests" */;
+			buildPhases = (
+				CB30CB3F15854A7900125C62 /* Sources */,
+				CB30CB4015854A7900125C62 /* Frameworks */,
+				CB30CB4115854A7900125C62 /* Resources */,
+				CB30CB4215854A7900125C62 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrollBuilderTests;
+			productName = TrollBuilderTests;
+			productReference = CB30CB4415854A7900125C62 /* TrollBuilderTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		CBCA2CCB154226540023DF27 /* TrollBuilder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBCA2CED154226550023DF27 /* Build configuration list for PBXNativeTarget "TrollBuilder" */;
@@ -253,29 +372,65 @@
 			projectRoot = "";
 			targets = (
 				CBCA2CCB154226540023DF27 /* TrollBuilder */,
+				CB30CB4315854A7900125C62 /* TrollBuilderTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CB30CB4115854A7900125C62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB30CB4D15854A7900125C62 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBCA2CCA154226540023DF27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CBCA2CDB154226540023DF27 /* InfoPlist.strings in Resources */,
-				CBCA2CE1154226540023DF27 /* Credits.rtf in Resources */,
 				CBCA2D0A15422D970023DF27 /* ProjectListView.xib in Resources */,
 				CBCA2D0F15422E570023DF27 /* MainMenu.xib in Resources */,
 				CBF693F1154C448300F6D4AC /* WarningSignIconSmall.png in Resources */,
 				CBF693F3154C44AA00F6D4AC /* xcode-project_Icon.icns in Resources */,
 				CB8830D5154CB08E0066F01F /* MainWindow.xib in Resources */,
 				CB3A4A90154F4D570022ACD1 /* WarningSignIconRedSmall.png in Resources */,
+				CB7E7453157E1361009A2F78 /* UnitTestIcon.icns in Resources */,
+				CB7E7455157E1385009A2F78 /* ApplicationIcon.icns in Resources */,
+				CB7E745A157E1535009A2F78 /* BundleIcon.icns in Resources */,
+				CB9C195815891B1600F8C36A /* project.pbxproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CB30CB4215854A7900125C62 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		CB30CB3F15854A7900125C62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB30CB5015854A7900125C62 /* TrollBuilderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBCA2CC8154226540023DF27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,15 +442,26 @@
 				CBCA2D0915422D970023DF27 /* ProjectListController.m in Sources */,
 				CBCA2D0D15422DDC0023DF27 /* MainWindowController.m in Sources */,
 				CBCA2D1415422F280023DF27 /* TBXCodeProjectParser.m in Sources */,
-				CB8830DE154D7C690066F01F /* TBTarget.m in Sources */,
 				CB8830E4154D7C820066F01F /* TBBuildConfiguration.m in Sources */,
 				CB3A4A8D154F49A00022ACD1 /* TBProject.m in Sources */,
+				CB7E7445157E0885009A2F78 /* TBXCodeTarget.m in Sources */,
+				CB7E7449157E08C4009A2F78 /* TBXCodeBuildConfiguration.m in Sources */,
+				CB7E7458157E14B4009A2F78 /* TBTarget.m in Sources */,
+				CBD07916158219B70080840F /* TBBuildQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		CB30CB4B15854A7900125C62 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB30CB4C15854A7900125C62 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		CBCA2CD9154226540023DF27 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -304,17 +470,33 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		CBCA2CDF154226540023DF27 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBCA2CE0154226540023DF27 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CB30CB5315854A7900125C62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrollBuilderTests/TrollBuilderTests-Prefix.pch";
+				INFOPLIST_FILE = "TrollBuilderTests/TrollBuilderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CB30CB5415854A7900125C62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrollBuilderTests/TrollBuilderTests-Prefix.pch";
+				INFOPLIST_FILE = "TrollBuilderTests/TrollBuilderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		CBCA2CEB154226550023DF27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -389,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CB30CB5215854A7900125C62 /* Build configuration list for PBXNativeTarget "TrollBuilderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB30CB5315854A7900125C62 /* Debug */,
+				CB30CB5415854A7900125C62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CBCA2CC6154226540023DF27 /* Build configuration list for PBXProject "TrollBuilder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

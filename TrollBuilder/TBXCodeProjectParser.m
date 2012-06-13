@@ -9,11 +9,8 @@
 
 #import "TBXCodeProjectParser.h"
 
-@implementation TBXCodeTarget
-@synthesize buildConfigurations;
-@synthesize name;
-@synthesize key;
-@end
+
+
 
 
 //@interface TBXCodeProjectParser(Private)
@@ -70,17 +67,43 @@
     NSArray* buildConfigurations = [buildConfigurationList objectForKey:@"buildConfigurations"];
     
     for(NSString* buildConfiguration in buildConfigurations) {
+
+        TBXCodeBuildConfiguration* buildConf = [[TBXCodeBuildConfiguration alloc] init];
         NSDictionary* buildConfigurationData = [self.objects objectForKey:buildConfiguration];
-        NSString* buildConfigurationName = [buildConfigurationData objectForKey:@"name"];
-        [configurations addObject:buildConfigurationName];
+        NSDictionary* buildConfSettings = [buildConfigurationData objectForKey:@"buildSettings"];
+        
+        buildConf.name = [buildConfigurationData objectForKey:@"name"];
+        buildConf.bundleLoader = [buildConfSettings objectForKey:@"BUNDLE_LOADER"];
+        buildConf.infoPlistPath = [buildConfSettings objectForKey:@"INFOPLIST_FILE"];
+        
+        NSString* wrapperExt = [buildConfSettings objectForKey:@"WRAPPER_EXTENSION"];
+        
+        if([[wrapperExt lowercaseString] isEqualToString:@"octest"])
+        {
+            buildConf.productType = TBTEST;
+        }
+        else if([[wrapperExt lowercaseString] isEqualToString:@"app"])
+        {
+            buildConf.productType = TBAPPLICATION;
+        }
+        else if([[wrapperExt lowercaseString] isEqualToString:@"bundle"])
+        {
+            buildConf.productType = TBBUNDLE;
+        }
+        else 
+        {
+            buildConf.productType = TBUNKNOWN;
+        }
+
+
+        [configurations addObject:buildConf];
     }
-    
-    
     return configurations;
 }
 
 - (TBXCodeTarget*) targetForKey:(NSString*) key
-{
+{ //productType = "com.apple.product-type.application";
+  //              "com.apple.product-type.bundle";
     TBXCodeTarget *target = nil;
     NSDictionary* targetData = [self.objects objectForKey:key];
     if(targetData != nil) {
@@ -88,6 +111,27 @@
         target.buildConfigurations = [self buildConfigurationsForKey:[targetData objectForKey:@"buildConfigurationList"]];
         target.key = key;
         target.name = [targetData objectForKey:@"name"];
+        
+        NSString* productType =  [targetData objectForKey:@"productType"];
+        if([productType hasSuffix:@"application"])
+        {
+            target.isApplication = YES;
+            target.isTestBundle = NO;
+        }
+        else 
+        {
+            TBXCodeBuildConfiguration* defaultConf = [target.buildConfigurations objectAtIndex:0];
+            if(defaultConf != nil && defaultConf.productType == TBTEST)
+            {
+                target.isTestBundle = YES;
+                target.isApplication = NO;
+            }
+            else 
+            {
+                target.isTestBundle = NO;
+                target.isApplication = NO;
+            }
+        }
     }
     
     return target;
@@ -138,44 +182,4 @@
     return _compatibilityVersion;
 }
 
-//
-// Start of a long (and ugly) function.. Heavely father, please forgive me for what I am about to do...
-//
-//- (BOOL) parsePbxprojFile:(NSDictionary*)data {
-//    //
-//    // Need to fetch:
-//    //  - All targets
-//    //  - All configurations
-//    NSDictionary* objects = [data objectForKey:@"objects"];
-//    
-//    NSDictionary* rootObject = [self rootObjectFromDictionary:data];
-//    
-//    //NSString* buildConfigurationListKey = [rootObject objectForKey:@"buildConfigurationList"]; //use target configurations instead..
-//    NSArray* targetKeys = [rootObject objectForKey:@"targets"];
-//    
-//    NSMutableArray* tmpTargets = [[NSMutableArray alloc] init];
-//    for(NSString* targetKey in targetKeys) {
-//        TBXCodeTarget* target = [[TBXCodeTarget alloc] init];
-//        NSDictionary* targetData = [objects objectForKey:targetKey];
-//        NSString* buildConfigurationListKey = [targetData objectForKey:@"buildConfigurationList"];
-//        NSDictionary* buildConfigurationList = [objects objectForKey:buildConfigurationListKey];
-//        
-//        NSArray* buildConfigurations = [buildConfigurationList objectForKey:@"buildConfigurations"];
-//        NSMutableArray* tmpConfigurations = [[NSMutableArray alloc] init];
-//        for(NSString* buildConfiguration in buildConfigurations) {
-//            NSDictionary* buildConfigurationData = [objects objectForKey:buildConfiguration];
-//            NSString* buildConfigurationName = [buildConfigurationData objectForKey:@"name"];
-//            [tmpConfigurations addObject:buildConfigurationName];
-//        }
-//        target.buildConfigurations = tmpConfigurations;
-//        target.name = [targetData objectForKey:@"name"];
-//        [tmpTargets addObject:target];
-//    }
-//    
-//    self.projectTargets = tmpTargets;
-//    self.projectCompatibilityVersion = [rootObject objectForKey:@"compatibilityVersion"];
-//    
-//    
-//    return YES; //TODO: Have some error handling
-//}
 @end
