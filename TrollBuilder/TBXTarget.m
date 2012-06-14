@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TBXCodeTarget.h"
+#import "TBXTarget.h"
 
-@implementation TBXCodeTarget
-@synthesize buildConfigurations;
+@implementation TBXTarget
+@synthesize targetConfigurations;
 @synthesize name;
 @synthesize key;
 @synthesize isTestBundle;

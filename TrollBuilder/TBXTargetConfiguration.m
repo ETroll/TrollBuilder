@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TBXCodeBuildConfiguration.h"
+#import "TBXTargetConfiguration.h"
 
-@implementation TBXCodeBuildConfiguration
+@implementation TBXTargetConfiguration
 @synthesize name;
 @synthesize productType;
 @synthesize bundleLoader;

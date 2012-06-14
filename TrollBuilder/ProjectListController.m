@@ -10,7 +10,7 @@
 #import "TBProjectCell.h"
 #import "TBProject.h"
 #import "TBTarget.h"
-#import "TBXCodeProjectParser.h"
+#import "TBXProject.h"
 
 @implementation ProjectListController
 
@@ -36,13 +36,13 @@
 {
     if([[NSFileManager defaultManager] fileExistsAtPath:managedProject.filepath])
     {
-        TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:managedProject.filepath];
+        TBXProject* project = [[TBXProject alloc] initWithContetsOfFile:managedProject.filepath];
         NSError* error = nil;
         
         managedProject.name = project.name;
         [managedProject removeChildren:managedProject.children];
         
-        for(TBXCodeTarget* t in project.targets) {
+        for(TBXTarget* t in project.targets) {
             TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
             target.name = t.name;
             target.isTest = [NSNumber numberWithBool:t.isTestBundle];
@@ -92,14 +92,24 @@
             NSString* file = [[panel URL] path];
             
             //NSString* testFile = @"~/Code/ContinousBuilder/ContinousBuilder.xcodeproj";
-            TBXCodeProjectParser* project = [[TBXCodeProjectParser alloc] initWithProjectFile:file];
+            TBXProject* project = [[TBXProject alloc] initWithContetsOfFile:file];
             
             
             TBProject *proj = [NSEntityDescription insertNewObjectForEntityForName:@"TBProject" inManagedObjectContext:self.context];
             proj.name = project.name;
             proj.filepath = file;
             
-            for(TBXCodeTarget* t in project.targets) {
+//            for(TBXTarget* t in project.targets) {
+//                TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
+//                target.name = t.name;
+//                target.isTest = [NSNumber numberWithBool:t.isTestBundle];
+//                target.isApplication = [NSNumber numberWithBool:t.isApplication];
+//                [proj addChildrenObject:target];
+//            }
+            
+            for(NSString* targetName in project.targets)
+            {
+                TBXTarget* t = [project.targets objectForKey:targetName];
                 TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
                 target.name = t.name;
                 target.isTest = [NSNumber numberWithBool:t.isTestBundle];
@@ -112,8 +122,10 @@
             }
             
             
-            NSArray* targets = project.targets;
-            NSLog(@"Targets %lu", [targets count]);
+            NSDictionary* buildConfs = project.buildConfigurations;
+            NSString* defaultBuildName = project.defaultBuildConfigurationName;
+            
+            NSLog(@"Buildconfs: %lu, default: %@ ", [buildConfs count], defaultBuildName);
             
             
             [outlineView reloadData];
@@ -168,6 +180,7 @@
         TBProject* info = [item representedObject];
         cell.name.stringValue = info.name;
         cell.targets = [info.children count];
+        
         if(![[NSFileManager defaultManager] fileExistsAtPath:info.filepath])
         {
             NSImage* statusImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WarningSignIconSmall" ofType:@"png"]];

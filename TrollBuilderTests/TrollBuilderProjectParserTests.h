@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface TrollBuilderTests : SenTestCase
+@interface TrollBuilderProjectParserTests : SenTestCase
 
 @end

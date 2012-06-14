@@ -21,6 +21,13 @@
     mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
     mainWindowController.context = [self managedObjectContext];
     [mainWindowController showWindow:nil];
+    
+    
+    //Set up some sort of preferences and or defaults.. TO BE REPLACED!
+    
+    
+    [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"com.apple.dt.Xcode"];
+    //com.apple.dt.Xcode
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "no.altinett.TrollBuilder" in the user's Application Support directory.

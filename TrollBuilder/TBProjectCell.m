@@ -63,6 +63,16 @@
     }
     
 }
+
+- (void) setSdkDescription:(NSString *)sdkDescription
+{
+    @synchronized(self)
+    {
+        _sdkDescription = sdkDescription;
+        [self updateDetailsText];
+    }
+}
+
 - (void)setHasErrors:(BOOL)hasErrors
 {
     @synchronized(self)

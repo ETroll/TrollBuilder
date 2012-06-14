@@ -15,7 +15,7 @@ enum TBBUILDPRODUCT {
     TBTEST = 3
 };
 
-@interface TBXCodeBuildConfiguration : NSObject
+@interface TBXTargetConfiguration : NSObject
 {
     /*
      buildSettings =     {

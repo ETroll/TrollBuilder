@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TBXCodeTarget : NSObject
+@interface TBXTarget : NSObject
 {
     
 }
-@property (strong, nonatomic) NSArray* buildConfigurations;
+@property (strong, nonatomic) NSArray* targetConfigurations;
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* key;
 @property (nonatomic) BOOL isTestBundle;
