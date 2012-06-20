@@ -10,6 +10,7 @@
 
 @implementation TBBuildJob
 
+@synthesize projectLocation;
 @synthesize sdk;
 @synthesize target;
 @synthesize projectName;

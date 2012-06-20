@@ -11,6 +11,9 @@
 #import "TBProject.h"
 #import "TBTarget.h"
 #import "TBXProject.h"
+#import "TBApplicationSettings.h"
+
+#import "TBBuilder.h"
 
 @implementation ProjectListController
 
@@ -127,6 +130,37 @@
             
             NSLog(@"Buildconfs: %lu, default: %@ ", [buildConfs count], defaultBuildName);
             
+            //////////////////////////////////////////////////////
+            //
+            //Build testing
+            //
+            TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:nil andToolsDirectory:@"/Applications/Xcode.app/Contents/Developer/usr/bin"];
+            
+            
+            TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
+            
+            for(NSString* targetKey in project.targets)
+            {      
+                /*
+                 @synthesize sdk;
+                 @synthesize target;
+                 @synthesize projectName;
+                 @synthesize buildConfiguration;
+                 */
+                
+                TBBuildJob* job = [[TBBuildJob alloc] init];
+                
+                job.projectLocation = [file stringByDeletingLastPathComponent];
+                job.sdk = buildConf.sdk;
+                job.target = targetKey;
+                job.projectName = project.name;
+                job.buildConfiguration = buildConf.name;
+                
+                [builder buildProject:job];
+                
+            }
+            
+            //////////////////////////////////////////////////////////
             
             [outlineView reloadData];
         }
@@ -204,17 +238,14 @@
         
         if([info.isApplication boolValue])
         {
-            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ApplicationIcon" ofType:@"icns"]];
-        }
-        else if([info.isTest boolValue])
-        {
-            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UnitTestIcon" ofType:@"icns"]];
+            targetIcon = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericApplicationIcon)];
         }
         else
         {
-            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BundleIcon" ofType:@"icns"]];
+            targetIcon = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bundle" ofType:@"icns"]];
         }
-        
+
+
         [targetIcon setSize:NSMakeSize(17, 17)];
         cell.imageView.image = targetIcon;
         
@@ -236,6 +267,17 @@
     else {
         return 17.0f;
     }
+}
+
+#pragma MARK - Build testing
+
+- (void) onBuildFailed
+{
+    NSLog(@"Build failed");
+}
+- (void) onBuildSuccess
+{
+    NSLog(@"Build success!");
 }
 
 @end

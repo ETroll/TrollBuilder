@@ -12,8 +12,8 @@
 {
     
 }
-
++ (TBApplicationSettings*) settings;
 @property (strong) NSString* xcodeInstallPath;
 @property (strong) NSString* devtoolsInstallPath;
-
+@property BOOL isLegacy;
 @end

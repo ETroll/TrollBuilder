@@ -8,6 +8,8 @@
 
 #import "MainWindowController.h"
 
+#import "TBApplicationSettings.h"
+
 #define kMinOutlineViewSplit	240.0f
 
 @implementation MainWindowController
@@ -34,7 +36,13 @@
     leftViewController.context = self.context;
     leftViewController.parentWindow = self.window;
     leftViewController.view.frame = leftView.frame;
+    
+    rightViewController = [[BuildInfoViewController alloc] initWithNibName:@"BuildInfoView" bundle:nil];
+    rightViewController.parentWindow = self.window;
+    
     [leftView addSubview:leftViewController.view];
+    [rightView addSubview:rightViewController.view];
+    
     [self.window display];
 }
 
@@ -87,6 +95,19 @@
 	[left setFrame:leftFrame];
 	[right setFrame:rightFrame];
 }
+
+
+- (IBAction)buildButtonPressed:(id)sender 
+{
+    
+    
+}
+
+- (IBAction)globalPreferencesPressed:(id)sender 
+{
+    
+}
+
 
 
 @end

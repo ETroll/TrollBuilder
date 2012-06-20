@@ -79,10 +79,11 @@
     {
         if(hasErrors) {
             //Set error icon
-            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconRedSmall.png"];
+            NSFileTypeForHFSTypeCode(kAlertCautionIcon);
+            self.errorIcon.image = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kAlertCautionIcon)];
         }else if(!hasErrors && _hasWarnings) {
             //Replace with warning icon
-            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconSmall.png"];
+            self.errorIcon.image = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kAlertStopIcon)];
         }else {
             //Remove icon
             self.errorIcon.image = nil;
@@ -97,7 +98,7 @@
     {
         if(hasWarnings && !_hasErrors) {
             //Set warning icon
-            self.errorIcon.image = [NSImage imageNamed:@"WarningSignIconSmall.png"];
+            self.errorIcon.image = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kAlertCautionIcon)];
         }else if(!hasWarnings && !_hasErrors) {
             //Remove warning icon
              self.errorIcon.image = nil;

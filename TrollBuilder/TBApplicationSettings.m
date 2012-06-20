@@ -12,7 +12,7 @@
 
 @synthesize xcodeInstallPath = _xcodeInstallPath;
 @synthesize devtoolsInstallPath = _devtoolsInstallPath;
-
+@synthesize isLegacy = _isLegacy;
 
 + (TBApplicationSettings*) settings 
 {
@@ -69,6 +69,25 @@
         return _xcodeInstallPath;
     }
 }
+
+- (void) setIsLegacy:(BOOL)isLegacy
+{
+    @synchronized(self)
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:isLegacy forKey:@"isLegacy"];
+        [[NSUserDefaults standardUserDefaults] synchronize]; //Unefficient, maybe change
+    }
+}
+
+- (BOOL) isLegacy
+{
+    @synchronized(self)
+    {
+        return [[[NSUserDefaults standardUserDefaults] valueForKey:@"isLegacy"] boolValue];
+    }
+}
+
+
 
 
 @end

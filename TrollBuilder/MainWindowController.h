@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ProjectListController.h"
+#import "BuildInfoViewController.h"
 
-@interface MainWindowController : NSWindowController
+//for testing --> Remove:
+
+
+@interface MainWindowController : NSWindowController 
 {
     ProjectListController* leftViewController;
+    BuildInfoViewController* rightViewController;
 }
 
 @property (nonatomic, weak) NSManagedObjectContext* context;
@@ -21,5 +26,7 @@
 @property (weak) IBOutlet NSView *rightView;
 
 
+- (IBAction)buildButtonPressed:(id)sender;
+- (IBAction)globalPreferencesPressed:(id)sender;
 
 @end

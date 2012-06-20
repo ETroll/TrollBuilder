@@ -9,7 +9,7 @@
 #import "TBBuilder.h"
 
 @interface TBBuilder ()
-- (NSData*) performTask: (NSString*) task withArguments: (NSArray*) arguments resultCode: (int*) res;
+- (NSData*) performTask: (NSString*) task withArguments: (NSArray*) arguments resultCode: (int*) res fromDirectory:(NSString*)dir;
 @end
 
 @implementation TBBuilder
@@ -31,11 +31,16 @@
     return self;
 }
 
-- (NSData*) performTask: (NSString*) task withArguments: (NSArray*) arguments resultCode: (int*) res 
+- (NSData*) performTask: (NSString*) task withArguments: (NSArray*) arguments resultCode: (int*) res fromDirectory:(NSString*)dir
 {
     
     NSTask *tmp = [[NSTask alloc] init];
     [tmp setLaunchPath:task];
+    
+    if(dir != nil)
+    {
+        [tmp setCurrentDirectoryPath:dir];
+    }
     
     NSPipe *pipe = [NSPipe pipe];
     [tmp setArguments:arguments];
@@ -60,24 +65,29 @@
     //[-sdk [sdkfullpath | sdkname]] [buildaction ...] [setting=value ...]
     //[-userdefault=value ...]
     int result = -1;
-    NSArray* arguments = [NSArray arrayWithObjects:[NSString stringWithFormat:@"-project %@", job.projectName],
-                                                    [NSString stringWithFormat:@"-target %@", job.target],
-                                                    [NSString stringWithFormat:@"-sdk %@", job.sdk],
-                                                    [NSString stringWithFormat:@"-configuration %@", job.buildConfiguration],
+    NSArray* arguments = [NSArray arrayWithObjects:@"-project", [NSString stringWithFormat:@"%@.xcodeproj", job.projectName],
+                                                    @"-target", job.target,
+                                                    @"-sdk", job.sdk,
+                                                    @"-configuration", job.buildConfiguration,
                                                     nil];
     
     
     NSData* output = [self performTask:[NSString stringWithFormat:@"%@/xcodebuild",_toolsDirectory]
                          withArguments:arguments
-                            resultCode:&result];
+                            resultCode:&result
+                         fromDirectory:job.projectLocation];
     
     NSString* outputString = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
-    NSLog(@"Build results: %@", outputString);
+    NSLog(@"----------------------------------------------------------");
+    NSLog(@"Build result code %d with results: %@", result, outputString);
+    NSLog(@"");
+    NSLog(@"");
 }
 
 - (void) packageApplication:(TBBuildJob*) job
 {
     ///usr/bin/xcrun -sdk iphoneos PackageApplication -v "${RELEASE_BUILDDIR}/${APPLICATION_NAME}.app" -o "${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${DEVELOPER_NAME}" --embed "${PROVISONING_PROFILE}”
 }
+
 
 @end

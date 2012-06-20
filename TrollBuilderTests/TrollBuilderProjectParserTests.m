@@ -7,7 +7,6 @@
 //
 
 #import "TrollBuilderProjectParserTests.h"
-#import "TBXCodeProjectParser.h"
 
 @implementation TrollBuilderProjectParserTests
 

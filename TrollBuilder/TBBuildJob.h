@@ -10,6 +10,7 @@
 
 @interface TBBuildJob : NSObject
 
+@property (strong, nonatomic) NSString* projectLocation;
 @property (strong, nonatomic) NSString* sdk;
 @property (strong, nonatomic) NSString* target;
 @property (strong, nonatomic) NSString* projectName;
