@@ -9,6 +9,8 @@
 #import "MainWindowController.h"
 
 #import "TBApplicationSettings.h"
+#import "TBProject.h"
+#import "TBTarget.h"
 
 #define kMinOutlineViewSplit	240.0f
 
@@ -17,13 +19,22 @@
 @synthesize splitView;
 @synthesize leftView;
 @synthesize rightView;
+@synthesize targetList;
 @synthesize context;
+
+- (void) setup
+{
+    _selectedProject = nil;
+    _isProjectBuilding = NO;
+    //_availableTargetsInSelectedProject = [[NSArrayController alloc] init];
+}
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
 {
     self = [super initWithWindowNibName:windowNibName];
-    if (self) {
-        NSLog(@"Init");
+    if (self) 
+    {
+        [self setup];
     }
     return self;
 }
@@ -32,22 +43,27 @@
 {
     NSLog(@"Window did load");
     NSLog(@"I have awoken from my hibernation. Now where is my food?");
-    leftViewController = [[ProjectListController alloc] initWithNibName:@"ProjectListView" bundle:nil];
-    leftViewController.context = self.context;
-    leftViewController.parentWindow = self.window;
-    leftViewController.view.frame = leftView.frame;
+    _leftViewController = [[ProjectListController alloc] initWithNibName:@"ProjectListView" bundle:nil];
+    _leftViewController.context = self.context;
+    _leftViewController.parentWindow = self.window;
+    _leftViewController.delegate = self;
+    _leftViewController.view.frame = leftView.frame;
     
-    rightViewController = [[BuildInfoViewController alloc] initWithNibName:@"BuildInfoView" bundle:nil];
-    rightViewController.parentWindow = self.window;
+    _rightViewController = [[BuildInfoViewController alloc] initWithNibName:@"BuildInfoView" bundle:nil];
+    _rightViewController.parentWindow = self.window;
     
-    [leftView addSubview:leftViewController.view];
-    [rightView addSubview:rightViewController.view];
+    [leftView addSubview:_leftViewController.view];
+    [rightView addSubview:_rightViewController.view];
+    
+    [targetList removeAllItems];
+    [targetList setEnabled:NO];
     
     [self.window display];
 }
 
-- (void) awakeFromNib {
-    
+- (void) awakeFromNib 
+{
+    [self setup];
 }
 
 
@@ -96,10 +112,30 @@
 	[right setFrame:rightFrame];
 }
 
+- (void) didSelectProject:(TBProject *)project
+{
+    [targetList setEnabled:YES];
+    [targetList removeAllItems];
+    _selectedProject = project;
+    
+    //NSRange range = NSMakeRange(0, [[_availableTargetsInSelectedProject arrangedObjects] count]);
+    //[_availableTargetsInSelectedProject removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    
+    for(TBTarget* target in project.children)
+    {
+        //[_availableTargetsInSelectedProject add:target.name];
+        [targetList addItemWithTitle:target.name];
+    }
+    
+}
+
 
 - (IBAction)buildButtonPressed:(id)sender 
 {
-    
+    if(_selectedProject != nil)
+    {
+        
+    }
     
 }
 

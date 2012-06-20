@@ -23,12 +23,14 @@
 @synthesize projectTree;
 @synthesize context;
 @synthesize parentWindow;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        _delegate = nil;
     }
     
     return self;
@@ -67,21 +69,10 @@
 
 - (IBAction)addButtonPressed:(id)sender 
 {
-    NSLog(@"Add");
-    
-//    NSMutableDictionary* item1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 4", @"itemName", [NSMutableArray array], @"children", nil];
-//    NSMutableDictionary* item2_1 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.1", @"itemName", [NSMutableArray array], @"children", nil];
-//    NSMutableDictionary* item2_2 = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Item 2.2", @"itemName", [NSMutableArray array], @"children", nil];
-//    
-//    [[item1 objectForKey: @"children"] addObject: item2_1];
-//    [[item1 objectForKey: @"children"] addObject: item2_2];
-//    
-//    NSIndexPath* indexPath = [NSIndexPath indexPathWithIndex:[data count]];
-//    
-//    [projectTree insertObject:item1 atArrangedObjectIndexPath:indexPath];
-//  
-    
-    
+    //
+    // TODO: Make parent window show dialog instead of child!
+    //       Use a delegate method that returns a string to a path for the cosen file.
+    //
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setDirectoryURL:[NSURL URLWithString:@"~/"]];
     [panel setAllowedFileTypes:[NSArray arrayWithObjects:@"xcodeproj",nil]];
@@ -102,14 +93,7 @@
             proj.name = project.name;
             proj.filepath = file;
             
-//            for(TBXTarget* t in project.targets) {
-//                TBTarget* target = [NSEntityDescription insertNewObjectForEntityForName:@"TBTarget" inManagedObjectContext:self.context];
-//                target.name = t.name;
-//                target.isTest = [NSNumber numberWithBool:t.isTestBundle];
-//                target.isApplication = [NSNumber numberWithBool:t.isApplication];
-//                [proj addChildrenObject:target];
-//            }
-            
+
             for(NSString* targetName in project.targets)
             {
                 TBXTarget* t = [project.targets objectForKey:targetName];
@@ -130,37 +114,30 @@
             
             NSLog(@"Buildconfs: %lu, default: %@ ", [buildConfs count], defaultBuildName);
             
-            //////////////////////////////////////////////////////
-            //
-            //Build testing
-            //
-            TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:nil andToolsDirectory:@"/Applications/Xcode.app/Contents/Developer/usr/bin"];
-            
-            
-            TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
-            
-            for(NSString* targetKey in project.targets)
-            {      
-                /*
-                 @synthesize sdk;
-                 @synthesize target;
-                 @synthesize projectName;
-                 @synthesize buildConfiguration;
-                 */
-                
-                TBBuildJob* job = [[TBBuildJob alloc] init];
-                
-                job.projectLocation = [file stringByDeletingLastPathComponent];
-                job.sdk = buildConf.sdk;
-                job.target = targetKey;
-                job.projectName = project.name;
-                job.buildConfiguration = buildConf.name;
-                
-                [builder buildProject:job];
-                
-            }
-            
-            //////////////////////////////////////////////////////////
+//            //////////////////////////////////////////////////////
+//            //
+//            //Build testing
+//            //
+//            TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:nil andToolsDirectory:@"/Applications/Xcode.app/Contents/Developer/usr/bin"];
+//            
+//            
+//            TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
+//            
+//            for(NSString* targetKey in project.targets)
+//            {      
+//                TBBuildJob* job = [[TBBuildJob alloc] init];
+//                
+//                job.projectLocation = [file stringByDeletingLastPathComponent];
+//                job.sdk = buildConf.sdk;
+//                job.target = targetKey;
+//                job.projectName = project.name;
+//                job.buildConfiguration = buildConf.name;
+//                
+//                [builder buildProject:job];
+//                
+//            }
+//            
+//            //////////////////////////////////////////////////////////
             
             [outlineView reloadData];
         }
@@ -217,7 +194,7 @@
         
         if(![[NSFileManager defaultManager] fileExistsAtPath:info.filepath])
         {
-            NSImage* statusImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WarningSignIconSmall" ofType:@"png"]];
+            NSImage* statusImage = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kAlertCautionIcon)];
             [statusImage setSize:NSMakeSize(16, 16)];
             cell.errorIcon.image = statusImage;
         }
@@ -253,7 +230,6 @@
     }
     
     
-    
     // return the result.
     return result;
 
@@ -268,6 +244,21 @@
         return 17.0f;
     }
 }
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    if(_delegate != nil)
+    {
+        NSTreeNode* selectedNode = [outlineView itemAtRow:[outlineView selectedRow]];
+        if([[selectedNode representedObject] isKindOfClass:[TBProject class]])
+        {
+            [_delegate didSelectProject:[selectedNode representedObject]];
+        }
+        
+        
+    }
+}
+
 
 #pragma MARK - Build testing
 
