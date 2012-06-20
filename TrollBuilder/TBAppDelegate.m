@@ -10,7 +10,6 @@
 
 @implementation TBAppDelegate
 
-@synthesize window = _window;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize managedObjectContext = __managedObjectContext;
@@ -18,6 +17,17 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    //NSString* test = [[NSString alloc] init];
+    mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    mainWindowController.context = [self managedObjectContext];
+    [mainWindowController showWindow:nil];
+    
+    
+    //Set up some sort of preferences and or defaults.. TO BE REPLACED!
+    
+    
+    [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"com.apple.dt.Xcode"];
+    //com.apple.dt.Xcode
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "no.altinett.TrollBuilder" in the user's Application Support directory.
@@ -82,9 +92,13 @@
         }
     }
     
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"TrollBuilder.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
+    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:options error:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }

@@ -1,0 +1,23 @@
+# ignore all files in an xcodeproj except for the project itself
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+
+
+# xcode noise
+*.mode1v3
+*.pbxuser
+*.perspective 
+*.perspectivev3
+*.pyc 
+
+#osx noise
+build
+*xcuserdata
+*.DS_Store
+.svn
+*.xcuserstate
+*.xcsettings
+*.xcworkspace/xcuserdata/*
+
+#Other noise
+Old/*

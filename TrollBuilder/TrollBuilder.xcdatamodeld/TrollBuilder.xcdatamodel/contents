@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TBBuildConfiguration" representedClassName="TBBuildConfiguration" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBBuildConfiguration" inverseName="children" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBTarget" inverseName="children" inverseEntity="TBTarget" syncable="YES"/>
+    </entity>
+    <entity name="TBError" syncable="YES">
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="errors" inverseEntity="TBProject" syncable="YES"/>
+    </entity>
+    <entity name="TBProject" representedClassName="TBProject" syncable="YES">
+        <attribute name="compability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filepath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TBTarget" inverseName="parent" inverseEntity="TBTarget" syncable="YES"/>
+        <relationship name="errors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBError" inverseName="project" inverseEntity="TBError" syncable="YES"/>
+        <relationship name="warnings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBWarning" inverseName="project" inverseEntity="TBWarning" syncable="YES"/>
+    </entity>
+    <entity name="TBTarget" representedClassName="TBTarget" syncable="YES">
+        <attribute name="isApplication" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isTest" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TBBuildConfiguration" inverseName="parent" inverseEntity="TBBuildConfiguration" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="children" inverseEntity="TBProject" syncable="YES"/>
+    </entity>
+    <entity name="TBWarning" syncable="YES">
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBProject" inverseName="warnings" inverseEntity="TBProject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TBBuildConfiguration" positionX="223" positionY="180" width="128" height="90"/>
+        <element name="TBError" positionX="-29" positionY="-144" width="128" height="90"/>
+        <element name="TBProject" positionX="-36" positionY="153" width="128" height="135"/>
+        <element name="TBTarget" positionX="178" positionY="-27" width="128" height="120"/>
+        <element name="TBWarning" positionX="142" positionY="-144" width="128" height="90"/>
+    </elements>
 </model>
