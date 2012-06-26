@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BuildInfoViewController : NSViewController
+@interface BuildLogViewController : NSViewController
 {
     
 }

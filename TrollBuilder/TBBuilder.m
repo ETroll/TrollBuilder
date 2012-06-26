@@ -82,6 +82,15 @@
     NSLog(@"Build result code %d with results: %@", result, outputString);
     NSLog(@"");
     NSLog(@"");
+    
+    if(result == 0)
+    {
+        [_delegate onBuildSuccess];
+    }
+    else 
+    {
+        [_delegate onBuildFailed];
+    }
 }
 
 - (void) packageApplication:(TBBuildJob*) job

@@ -7,12 +7,18 @@
 //
 
 #import "MainWindowController.h"
-
 #import "TBApplicationSettings.h"
+
 #import "TBProject.h"
 #import "TBTarget.h"
 
+#import "TBXProject.h"
+
 #define kMinOutlineViewSplit	240.0f
+
+@interface MainWindowController()
+- (void) displaySettingsSheet;
+@end
 
 @implementation MainWindowController
 
@@ -27,6 +33,18 @@
     _selectedProject = nil;
     _isProjectBuilding = NO;
     //_availableTargetsInSelectedProject = [[NSArrayController alloc] init];
+}
+
+- (void) displaySettingsSheet
+{
+    _settingsWindow = [[SettingsWindowController alloc] initWithWindowNibName:@"SettingsWindow"];
+    
+    //NOTE TO SOBER SELF: A window will not work when its "visible at launch"
+    [NSApp beginSheet: _settingsWindow.window
+       modalForWindow: self.window
+        modalDelegate: nil
+       didEndSelector: nil//@selector(debugSheetDidEnd:returnCode:contextInfo:)
+          contextInfo: NULL];
 }
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
@@ -49,16 +67,51 @@
     _leftViewController.delegate = self;
     _leftViewController.view.frame = leftView.frame;
     
-    _rightViewController = [[BuildInfoViewController alloc] initWithNibName:@"BuildInfoView" bundle:nil];
+    _rightViewController = [[BuildLogViewController alloc] initWithNibName:@"BuildLogView" bundle:nil];
     _rightViewController.parentWindow = self.window;
+    NSLog(@"frame = %@\n", NSStringFromRect(rightView.frame));
+    _rightViewController.view.frame = CGRectMake(0, 0, rightView.frame.size.width, rightView.frame.size.height);
     
     [leftView addSubview:_leftViewController.view];
     [rightView addSubview:_rightViewController.view];
+    
+//    NSView *contentView = rightView;
+//    NSView *customView = _rightViewController.view;
+//    [_rightViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+//    [contentView addSubview:customView];
+//    
+//    NSDictionary *views = NSDictionaryOfVariableBindings(customView);
+//    
+//    [contentView addConstraints:
+//     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[customView]|"
+//                                             options:0
+//                                             metrics:nil
+//                                               views:views]];
+//    
+//    [contentView addConstraints:
+//     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[customView]|"
+//                                             options:0
+//                                             metrics:nil
+//                                               views:views]];
+//
+//    
     
     [targetList removeAllItems];
     [targetList setEnabled:NO];
     
     [self.window display];
+    
+    if([TBApplicationSettings settings].xcodeInstallPath == nil)
+    {
+        [self displaySettingsSheet];
+        NSAlert *theAlert = [NSAlert alertWithMessageText:@"Info" 
+                                            defaultButton:@"OK" 
+                                          alternateButton:nil 
+                                              otherButton:nil 
+                                informativeTextWithFormat:@"Trollbuilder is not configured. Please provide a path for Xcode or use auto-detect."];
+        [theAlert runModal];
+    }
 }
 
 - (void) awakeFromNib 
@@ -129,21 +182,64 @@
     
 }
 
+- (void) didSelectTarget:(TBTarget*)target
+{
+    [self.targetList setTitle:target.name];
+}
+
+- (IBAction)quitApplicationPressed:(id)sender 
+{
+    //TODO! Exit more gracefully.. this is just for debug now
+    exit(0);
+}
 
 - (IBAction)buildButtonPressed:(id)sender 
 {
     if(_selectedProject != nil)
     {
+        TBXProject* project = [[TBXProject alloc] initWithContetsOfFile:_selectedProject.filepath];
         
+        TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:self andToolsDirectory:[TBApplicationSettings settings].devtoolsInstallPath];
+        TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
+        
+    
+        TBBuildJob* job = [[TBBuildJob alloc] init];
+        
+        job.projectLocation = [_selectedProject.filepath stringByDeletingLastPathComponent];
+        job.sdk = buildConf.sdk;
+        job.target = targetList.titleOfSelectedItem;
+        job.projectName = project.name;
+        job.buildConfiguration = buildConf.name;
+        
+        [builder buildProject:job];
+
     }
     
 }
 
 - (IBAction)globalPreferencesPressed:(id)sender 
 {
-    
+    [self displaySettingsSheet];
 }
 
+- (IBAction)aboutApplicationPressed:(id)sender {
+}
 
+- (IBAction)selectedTargetChanged:(NSPopUpButton*)sender 
+{
+    [self.targetList setTitle:[sender titleOfSelectedItem]];
+    NSLog(@"Selected target changed");
+}
+
+#pragma MARK - Builder delegate
+
+- (void) onBuildFailed
+{
+    NSLog(@"Build failed!");
+}
+- (void) onBuildSuccess
+{
+    NSLog(@"Build success");
+}
 
 @end

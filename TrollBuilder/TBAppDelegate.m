@@ -24,9 +24,6 @@
     
     
     //Set up some sort of preferences and or defaults.. TO BE REPLACED!
-    
-    
-    [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"com.apple.dt.Xcode"];
     //com.apple.dt.Xcode
 }
 
@@ -193,6 +190,11 @@
     }
 
     return NSTerminateNow;
+}
+
+- (BOOL) applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
+    [mainWindowController.window makeKeyAndOrderFront:nil];
+    return YES;
 }
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BuildInfoViewController.h"
+#import "BuildLogViewController.h"
 
-@interface BuildInfoViewController ()
+@interface BuildLogViewController ()
 
 @end
 
-@implementation BuildInfoViewController
+@implementation BuildLogViewController
 
 @synthesize parentWindow;
 
@@ -25,5 +25,19 @@
     
     return self;
 }
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView 
+{
+    return 13;
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row 
+{
+    NSTableCellView *result = [tableView makeViewWithIdentifier:@"BuildLogNormalCell" owner:self];
+    
+    return result;
+}
+
+
 
 @end

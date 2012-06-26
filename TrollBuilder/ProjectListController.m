@@ -13,7 +13,6 @@
 #import "TBXProject.h"
 #import "TBApplicationSettings.h"
 
-#import "TBBuilder.h"
 
 @implementation ProjectListController
 
@@ -23,6 +22,7 @@
 @synthesize projectTree;
 @synthesize context;
 @synthesize parentWindow;
+@synthesize addPopover;
 @synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,8 +67,9 @@
     
 }
 
-- (IBAction)addButtonPressed:(id)sender 
+- (IBAction)addLocalFilePressed:(id)sender 
 {
+    [self. addPopover close];
     //
     // TODO: Make parent window show dialog instead of child!
     //       Use a delegate method that returns a string to a path for the cosen file.
@@ -93,7 +94,7 @@
             proj.name = project.name;
             proj.filepath = file;
             
-
+            
             for(NSString* targetName in project.targets)
             {
                 TBXTarget* t = [project.targets objectForKey:targetName];
@@ -114,36 +115,29 @@
             
             NSLog(@"Buildconfs: %lu, default: %@ ", [buildConfs count], defaultBuildName);
             
-//            //////////////////////////////////////////////////////
-//            //
-//            //Build testing
-//            //
-//            TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:nil andToolsDirectory:@"/Applications/Xcode.app/Contents/Developer/usr/bin"];
-//            
-//            
-//            TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
-//            
-//            for(NSString* targetKey in project.targets)
-//            {      
-//                TBBuildJob* job = [[TBBuildJob alloc] init];
-//                
-//                job.projectLocation = [file stringByDeletingLastPathComponent];
-//                job.sdk = buildConf.sdk;
-//                job.target = targetKey;
-//                job.projectName = project.name;
-//                job.buildConfiguration = buildConf.name;
-//                
-//                [builder buildProject:job];
-//                
-//            }
-//            
-//            //////////////////////////////////////////////////////////
             
             [outlineView reloadData];
         }
     }];
+}
+
+- (IBAction)addGitremotePressed:(id)sender 
+{
+    [self. addPopover close];
+}
+
+- (IBAction)addButtonPressed:(id)sender 
+{
+    
+    [self.addPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
+    
+    
+
     
 }
+
+
+
 
 - (IBAction)removeButtonPressed:(id)sender {
     NSLog(@"Remove");
@@ -254,21 +248,16 @@
         {
             [_delegate didSelectProject:[selectedNode representedObject]];
         }
+        else {
+            if([_delegate respondsToSelector:@selector(didSelectTarget:)])
+            {
+                
+                [_delegate didSelectTarget:[selectedNode representedObject]];
+            }
+        }
         
         
     }
-}
-
-
-#pragma MARK - Build testing
-
-- (void) onBuildFailed
-{
-    NSLog(@"Build failed");
-}
-- (void) onBuildSuccess
-{
-    NSLog(@"Build success!");
 }
 
 @end

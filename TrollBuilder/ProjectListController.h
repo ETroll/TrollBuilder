@@ -31,14 +31,19 @@
 
 //Replace all methods using this with delegate
 @property (strong, nonatomic) NSWindow* parentWindow;
+@property (strong) IBOutlet NSPopover *addPopover;
+@property (strong) IBOutlet NSTreeController *projectTree;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet NSButton *addButton;
 @property (weak) IBOutlet NSButton *removeButton;
-@property (strong) IBOutlet NSTreeController *projectTree;
+
 
 - (IBAction)addButtonPressed:(id)sender;
+- (IBAction)addLocalFilePressed:(id)sender;
+- (IBAction)addGitremotePressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;
+
 - (void) refreshProjectWithPath:(NSString*)path;
 
 @end
