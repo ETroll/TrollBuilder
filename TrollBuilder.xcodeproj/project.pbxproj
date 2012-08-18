@@ -10,7 +10,7 @@
 		CB30CB4615854A7900125C62 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB30CB4515854A7900125C62 /* SenTestingKit.framework */; };
 		CB30CB4715854A7900125C62 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA2CD0154226540023DF27 /* Cocoa.framework */; };
 		CB30CB4D15854A7900125C62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB30CB4B15854A7900125C62 /* InfoPlist.strings */; };
-		CB30CB5015854A7900125C62 /* TrollBuilderProjectParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB30CB4F15854A7900125C62 /* TrollBuilderProjectParserTests.m */; };
+		CB30CB5015854A7900125C62 /* TBProjectParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB30CB4F15854A7900125C62 /* TBProjectParserTests.m */; };
 		CB36A90815911E93002D1A7E /* BuildLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB36A90615911E93002D1A7E /* BuildLogViewController.m */; };
 		CB36A90915911E93002D1A7E /* BuildLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB36A90715911E93002D1A7E /* BuildLogView.xib */; };
 		CB36A90D1591238C002D1A7E /* TrollBuilder.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB36A90C1591238C002D1A7E /* TrollBuilder.icns */; };
@@ -45,8 +45,27 @@
 		CBCA2D0F15422E570023DF27 /* MainApplication.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA2D0E15422E570023DF27 /* MainApplication.xib */; };
 		CBCA2D1415422F280023DF27 /* TBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCA2D1315422F280023DF27 /* TBXProject.m */; };
 		CBD07916158219B70080840F /* TBBuildQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD07915158219B70080840F /* TBBuildQueue.m */; };
+		CBDC3DC715E02CF100C0C82A /* TBGit.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDC3DC615E02CF100C0C82A /* TBGit.m */; };
+		CBDC3DCA15E0312300C0C82A /* TBGitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDC3DC915E0312300C0C82A /* TBGitTests.m */; };
+		CBDC3DDC15E03C5F00C0C82A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */; };
+		CBDC3DF915E03CA400C0C82A /* ObjectiveGit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */; };
+		CBDC3E0715E0418C00C0C82A /* git2 in Resources */ = {isa = PBXBuildFile; fileRef = CBDC3E0415E0418C00C0C82A /* git2 */; };
+		CBDC3E0815E0418C00C0C82A /* libgit2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDC3E0615E0418C00C0C82A /* libgit2.a */; };
 		CBF693F3154C44AA00F6D4AC /* Xcodeproj.icns in Resources */ = {isa = PBXBuildFile; fileRef = CBF693F2154C44AA00F6D4AC /* Xcodeproj.icns */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CBDC3DF815E03C9400C0C82A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CBDC3DF915E03CA400C0C82A /* ObjectiveGit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CB30CB3C1585498A00125C62 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
@@ -54,8 +73,8 @@
 		CB30CB4515854A7900125C62 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CB30CB4A15854A7900125C62 /* TrollBuilderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrollBuilderTests-Info.plist"; sourceTree = "<group>"; };
 		CB30CB4C15854A7900125C62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CB30CB4E15854A7900125C62 /* TrollBuilderProjectParserTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrollBuilderProjectParserTests.h; sourceTree = "<group>"; };
-		CB30CB4F15854A7900125C62 /* TrollBuilderProjectParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrollBuilderProjectParserTests.m; sourceTree = "<group>"; };
+		CB30CB4E15854A7900125C62 /* TBProjectParserTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBProjectParserTests.h; sourceTree = "<group>"; };
+		CB30CB4F15854A7900125C62 /* TBProjectParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBProjectParserTests.m; sourceTree = "<group>"; };
 		CB30CB5115854A7900125C62 /* TrollBuilderTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrollBuilderTests-Prefix.pch"; sourceTree = "<group>"; };
 		CB36A90515911E93002D1A7E /* BuildLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildLogViewController.h; sourceTree = "<group>"; };
 		CB36A90615911E93002D1A7E /* BuildLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildLogViewController.m; sourceTree = "<group>"; };
@@ -115,6 +134,14 @@
 		CBCA2D1315422F280023DF27 /* TBXProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXProject.m; sourceTree = "<group>"; };
 		CBD07914158219B70080840F /* TBBuildQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBBuildQueue.h; sourceTree = "<group>"; };
 		CBD07915158219B70080840F /* TBBuildQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBBuildQueue.m; sourceTree = "<group>"; };
+		CBDC3DC515E02CF100C0C82A /* TBGit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGit.h; sourceTree = "<group>"; };
+		CBDC3DC615E02CF100C0C82A /* TBGit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGit.m; sourceTree = "<group>"; };
+		CBDC3DC815E0312300C0C82A /* TBGitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGitTests.h; sourceTree = "<group>"; };
+		CBDC3DC915E0312300C0C82A /* TBGitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGitTests.m; sourceTree = "<group>"; };
+		CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveGit.framework; path = Libraries/ObjectiveGit.framework; sourceTree = "<group>"; };
+		CBDC3E0415E0418C00C0C82A /* git2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = git2; path = Libraries/libgit2/git2; sourceTree = "<group>"; };
+		CBDC3E0515E0418C00C0C82A /* git2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = git2.h; path = Libraries/libgit2/git2.h; sourceTree = "<group>"; };
+		CBDC3E0615E0418C00C0C82A /* libgit2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgit2.a; path = Libraries/libgit2/libgit2.a; sourceTree = "<group>"; };
 		CBF693F2154C44AA00F6D4AC /* Xcodeproj.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Xcodeproj.icns; path = Resources/Icons/Xcodeproj.icns; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -133,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCA2CD1154226540023DF27 /* Cocoa.framework in Frameworks */,
+				CBDC3DDC15E03C5F00C0C82A /* ObjectiveGit.framework in Frameworks */,
+				CBDC3E0815E0418C00C0C82A /* libgit2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,9 +197,11 @@
 			isa = PBXGroup;
 			children = (
 				CB9C19641589235800F8C36A /* Data */,
-				CB30CB4E15854A7900125C62 /* TrollBuilderProjectParserTests.h */,
-				CB30CB4F15854A7900125C62 /* TrollBuilderProjectParserTests.m */,
 				CB30CB4915854A7900125C62 /* Supporting Files */,
+				CB30CB4E15854A7900125C62 /* TBProjectParserTests.h */,
+				CB30CB4F15854A7900125C62 /* TBProjectParserTests.m */,
+				CBDC3DC815E0312300C0C82A /* TBGitTests.h */,
+				CBDC3DC915E0312300C0C82A /* TBGitTests.m */,
 			);
 			path = TrollBuilderTests;
 			sourceTree = "<group>";
@@ -243,21 +274,15 @@
 		CBCA2CCF154226540023DF27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBDC3E0115E0405000C0C82A /* libgit2 */,
+				CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */,
 				CBCA2CD0154226540023DF27 /* Cocoa.framework */,
 				CB30CB4515854A7900125C62 /* SenTestingKit.framework */,
-				CBCA2CD2154226540023DF27 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CBCA2CD2154226540023DF27 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
 				CBCA2CD3154226540023DF27 /* AppKit.framework */,
 				CBCA2CD4154226540023DF27 /* CoreData.framework */,
 				CBCA2CD5154226540023DF27 /* Foundation.framework */,
 			);
-			name = "Other Frameworks";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CBCA2CD6154226540023DF27 /* TrollBuilder */ = {
@@ -272,6 +297,7 @@
 				CB30CB39158545BC00125C62 /* Cocoa UI */,
 				CB8830E9154D85890066F01F /* XCode Project Parser */,
 				CBD07913158218B20080840F /* XCode Project Build System */,
+				CBDC3DC315E02C3100C0C82A /* Git */,
 				CBCA2CD7154226540023DF27 /* Supporting Files */,
 			);
 			path = TrollBuilder;
@@ -341,6 +367,25 @@
 			name = "XCode Project Build System";
 			sourceTree = "<group>";
 		};
+		CBDC3DC315E02C3100C0C82A /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				CBDC3DC515E02CF100C0C82A /* TBGit.h */,
+				CBDC3DC615E02CF100C0C82A /* TBGit.m */,
+			);
+			name = Git;
+			sourceTree = "<group>";
+		};
+		CBDC3E0115E0405000C0C82A /* libgit2 */ = {
+			isa = PBXGroup;
+			children = (
+				CBDC3E0415E0418C00C0C82A /* git2 */,
+				CBDC3E0515E0418C00C0C82A /* git2.h */,
+				CBDC3E0615E0418C00C0C82A /* libgit2.a */,
+			);
+			name = libgit2;
+			sourceTree = "<group>";
+		};
 		CBF693ED154C445800F6D4AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +437,7 @@
 				CBCA2CC8154226540023DF27 /* Sources */,
 				CBCA2CC9154226540023DF27 /* Frameworks */,
 				CBCA2CCA154226540023DF27 /* Resources */,
+				CBDC3DF815E03C9400C0C82A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -457,6 +503,7 @@
 				CBA41B9B15912C5C00F3CCE1 /* Documentation.icns in Resources */,
 				CBA0846B1593C91A000E2E6F /* AboutWindow.xib in Resources */,
 				CBA084C41595308D000E2E6F /* SettingsWindow.xib in Resources */,
+				CBDC3E0715E0418C00C0C82A /* git2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +530,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB30CB5015854A7900125C62 /* TrollBuilderProjectParserTests.m in Sources */,
+				CB30CB5015854A7900125C62 /* TBProjectParserTests.m in Sources */,
+				CBDC3DCA15E0312300C0C82A /* TBGitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +558,7 @@
 				CB5E79F8158A80DE00F3EC51 /* TBXBuildConfiguration.m in Sources */,
 				CB36A90815911E93002D1A7E /* BuildLogViewController.m in Sources */,
 				CBA084C11595305C000E2E6F /* SettingsWindowController.m in Sources */,
+				CBDC3DC715E02CF100C0C82A /* TBGit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,9 +663,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/libgit2\"";
 				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+					"\"$(SRCROOT)/Libraries/libgit2\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -627,9 +686,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/libgit2\"";
 				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+					"\"$(SRCROOT)/Libraries/libgit2\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

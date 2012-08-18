@@ -3,12 +3,12 @@
 //  TrollBuilderTests
 //
 //  Created by Karl Løland on 6/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Altinett AS. All rights reserved.
 //
 
-#import "TrollBuilderProjectParserTests.h"
+#import "TBProjectParserTests.h"
 
-@implementation TrollBuilderProjectParserTests
+@implementation TBProjectParserTests
 
 - (void)setUp
 {

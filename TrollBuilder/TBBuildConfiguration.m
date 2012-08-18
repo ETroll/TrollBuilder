@@ -3,7 +3,7 @@
 //  TrollBuilder
 //
 //  Created by Karl Løland on 4/29/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Altinett AS. All rights reserved.
 //
 
 #import "TBBuildConfiguration.h"

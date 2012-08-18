@@ -3,7 +3,7 @@
 //  ContinousBuilder
 //
 //  Created by Karl Løland on 2/19/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Altinett AS. All rights reserved.
 //
 
 #import "ProjectListController.h"
@@ -69,7 +69,7 @@
 
 - (IBAction)addLocalFilePressed:(id)sender 
 {
-    [self. addPopover close];
+    [self.addPopover close];
     //
     // TODO: Make parent window show dialog instead of child!
     //       Use a delegate method that returns a string to a path for the cosen file.
@@ -128,12 +128,14 @@
 
 - (IBAction)addButtonPressed:(id)sender 
 {
-    
-    [self.addPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
-    
-    
-
-    
+    if(!self.addPopover.isShown)
+    {
+        [self.addPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
+    }
+    else 
+    {
+        [self.addPopover close];
+    }
 }
 
 
