@@ -77,6 +77,8 @@ typedef void (^GTRepositoryStatusBlock)(NSURL *fileURL, GTRepositoryFileStatus s
 
 + (id)repositoryWithURL:(NSURL *)localFileURL error:(NSError **)error;
 - (id)initWithURL:(NSURL *)localFileURL error:(NSError **)error;
++ (id)cloneRepositoryWithURL:(NSURL*) remoteRepoURL toLocalFileURL:(NSURL*)localFileURL error:(NSError**)error;
+
 
 // Helper for getting the sha1 has of a raw object
 //

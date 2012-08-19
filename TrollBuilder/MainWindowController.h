@@ -11,6 +11,7 @@
 #import "ProjectListController.h"
 #import "BuildLogViewController.h"
 #import "SettingsWindowController.h"
+#import "RemoteDialogWindowController.h"
 
 #import "TBBuilder.h"
 
@@ -23,6 +24,7 @@
     ProjectListController* _leftViewController;
     BuildLogViewController* _rightViewController;
     SettingsWindowController* _settingsWindow;
+    RemoteDialogWindowController* _remoteDialogWindow;
     
     TBProject* _selectedProject;
     //NSArrayController* _availableTargetsInSelectedProject;    

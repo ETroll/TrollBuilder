@@ -49,8 +49,8 @@
 		CBDC3DCA15E0312300C0C82A /* TBGitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDC3DC915E0312300C0C82A /* TBGitTests.m */; };
 		CBDC3DDC15E03C5F00C0C82A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */; };
 		CBDC3DF915E03CA400C0C82A /* ObjectiveGit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */; };
-		CBDC3E0715E0418C00C0C82A /* git2 in Resources */ = {isa = PBXBuildFile; fileRef = CBDC3E0415E0418C00C0C82A /* git2 */; };
-		CBDC3E0815E0418C00C0C82A /* libgit2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDC3E0615E0418C00C0C82A /* libgit2.a */; };
+		CBDC3E0A15E047FD00C0C82A /* RemoteDialogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDC3E0915E047FD00C0C82A /* RemoteDialogWindow.xib */; };
+		CBDC3E0D15E04D1400C0C82A /* RemoteDialogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDC3E0C15E04D1400C0C82A /* RemoteDialogWindowController.m */; };
 		CBF693F3154C44AA00F6D4AC /* Xcodeproj.icns in Resources */ = {isa = PBXBuildFile; fileRef = CBF693F2154C44AA00F6D4AC /* Xcodeproj.icns */; };
 /* End PBXBuildFile section */
 
@@ -139,9 +139,9 @@
 		CBDC3DC815E0312300C0C82A /* TBGitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGitTests.h; sourceTree = "<group>"; };
 		CBDC3DC915E0312300C0C82A /* TBGitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGitTests.m; sourceTree = "<group>"; };
 		CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveGit.framework; path = Libraries/ObjectiveGit.framework; sourceTree = "<group>"; };
-		CBDC3E0415E0418C00C0C82A /* git2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = git2; path = Libraries/libgit2/git2; sourceTree = "<group>"; };
-		CBDC3E0515E0418C00C0C82A /* git2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = git2.h; path = Libraries/libgit2/git2.h; sourceTree = "<group>"; };
-		CBDC3E0615E0418C00C0C82A /* libgit2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgit2.a; path = Libraries/libgit2/libgit2.a; sourceTree = "<group>"; };
+		CBDC3E0915E047FD00C0C82A /* RemoteDialogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteDialogWindow.xib; sourceTree = "<group>"; };
+		CBDC3E0B15E04D1400C0C82A /* RemoteDialogWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDialogWindowController.h; sourceTree = "<group>"; };
+		CBDC3E0C15E04D1400C0C82A /* RemoteDialogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDialogWindowController.m; sourceTree = "<group>"; };
 		CBF693F2154C44AA00F6D4AC /* Xcodeproj.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Xcodeproj.icns; path = Resources/Icons/Xcodeproj.icns; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,6 @@
 			files = (
 				CBCA2CD1154226540023DF27 /* Cocoa.framework in Frameworks */,
 				CBDC3DDC15E03C5F00C0C82A /* ObjectiveGit.framework in Frameworks */,
-				CBDC3E0815E0418C00C0C82A /* libgit2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +224,7 @@
 				CBCA2D0E15422E570023DF27 /* MainApplication.xib */,
 				CBA0846A1593C91A000E2E6F /* AboutWindow.xib */,
 				CBA084C31595308D000E2E6F /* SettingsWindow.xib */,
+				CBDC3E0915E047FD00C0C82A /* RemoteDialogWindow.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -274,7 +274,6 @@
 		CBCA2CCF154226540023DF27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CBDC3E0115E0405000C0C82A /* libgit2 */,
 				CBDC3DD915E03BD800C0C82A /* ObjectiveGit.framework */,
 				CBCA2CD0154226540023DF27 /* Cocoa.framework */,
 				CB30CB4515854A7900125C62 /* SenTestingKit.framework */,
@@ -342,8 +341,7 @@
 		CBCA2D0515422D8B0023DF27 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBA084BF1595305C000E2E6F /* SettingsWindowController.h */,
-				CBA084C01595305C000E2E6F /* SettingsWindowController.m */,
+				CBDC3E0E15E04D1D00C0C82A /* Modal Window Controllers */,
 				CBCA2D0615422D970023DF27 /* ProjectListController.h */,
 				CBCA2D0715422D970023DF27 /* ProjectListController.m */,
 				CBCA2D0B15422DDC0023DF27 /* MainWindowController.h */,
@@ -376,14 +374,15 @@
 			name = Git;
 			sourceTree = "<group>";
 		};
-		CBDC3E0115E0405000C0C82A /* libgit2 */ = {
+		CBDC3E0E15E04D1D00C0C82A /* Modal Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBDC3E0415E0418C00C0C82A /* git2 */,
-				CBDC3E0515E0418C00C0C82A /* git2.h */,
-				CBDC3E0615E0418C00C0C82A /* libgit2.a */,
+				CBA084BF1595305C000E2E6F /* SettingsWindowController.h */,
+				CBA084C01595305C000E2E6F /* SettingsWindowController.m */,
+				CBDC3E0B15E04D1400C0C82A /* RemoteDialogWindowController.h */,
+				CBDC3E0C15E04D1400C0C82A /* RemoteDialogWindowController.m */,
 			);
-			name = libgit2;
+			name = "Modal Window Controllers";
 			sourceTree = "<group>";
 		};
 		CBF693ED154C445800F6D4AC /* Resources */ = {
@@ -503,7 +502,7 @@
 				CBA41B9B15912C5C00F3CCE1 /* Documentation.icns in Resources */,
 				CBA0846B1593C91A000E2E6F /* AboutWindow.xib in Resources */,
 				CBA084C41595308D000E2E6F /* SettingsWindow.xib in Resources */,
-				CBDC3E0715E0418C00C0C82A /* git2 in Resources */,
+				CBDC3E0A15E047FD00C0C82A /* RemoteDialogWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +558,7 @@
 				CB36A90815911E93002D1A7E /* BuildLogViewController.m in Sources */,
 				CBA084C11595305C000E2E6F /* SettingsWindowController.m in Sources */,
 				CBDC3DC715E02CF100C0C82A /* TBGit.m in Sources */,
+				CBDC3E0D15E04D1400C0C82A /* RemoteDialogWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,12 +669,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/libgit2\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/ObjectiveGit.framework/Versions/A/Headers\"";
 				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
-					"\"$(SRCROOT)/Libraries/libgit2\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -692,12 +691,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrollBuilder/TrollBuilder-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/libgit2\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/ObjectiveGit.framework/Versions/A/Headers\"";
 				INFOPLIST_FILE = "TrollBuilder/TrollBuilder-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
-					"\"$(SRCROOT)/Libraries/libgit2\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";

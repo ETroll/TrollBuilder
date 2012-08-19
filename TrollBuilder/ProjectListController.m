@@ -12,6 +12,7 @@
 #import "TBTarget.h"
 #import "TBXProject.h"
 #import "TBApplicationSettings.h"
+#import "TBGit.h"
 
 
 @implementation ProjectListController
@@ -74,6 +75,8 @@
     // TODO: Make parent window show dialog instead of child!
     //       Use a delegate method that returns a string to a path for the cosen file.
     //
+    //       Also check for .git folder and try to set up Git if it exists
+    //
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setDirectoryURL:[NSURL URLWithString:@"~/"]];
     [panel setAllowedFileTypes:[NSArray arrayWithObjects:@"xcodeproj",nil]];
@@ -123,7 +126,25 @@
 
 - (IBAction)addGitremotePressed:(id)sender 
 {
-    [self. addPopover close];
+    [self.addPopover close];
+    NSString* remoteURL = [self.delegate showRemoteURLDialog];
+    if(remoteURL != nil)
+    {
+        TBGit* remoteGit = [[TBGit alloc] initWithRemote:remoteURL];
+        if(remoteGit != nil)
+        {
+            NSLog(@"Yeehaaw!!");
+        }
+        else 
+        {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Error" 
+                                                defaultButton:@"OK" 
+                                              alternateButton:nil 
+                                                  otherButton:nil 
+                                    informativeTextWithFormat:@"Could not manage to connect to repository"];
+            [alert runModal];
+        }
+    }
 }
 
 - (IBAction)addButtonPressed:(id)sender 

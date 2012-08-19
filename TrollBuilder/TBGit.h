@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class GTRepository;
 
 @interface TBGit : NSObject
 {
-    
+    @private
+    GTRepository* gitRepo;
 }
 
 @property (strong, nonatomic) NSString* remote;

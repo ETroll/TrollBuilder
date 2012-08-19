@@ -28,6 +28,16 @@
 @synthesize targetList;
 @synthesize context;
 
+- (id)initWithWindowNibName:(NSString *)windowNibName
+{
+    self = [super initWithWindowNibName:windowNibName];
+    if (self) 
+    {
+        [self setup];
+    }
+    return self;
+}
+
 - (void) setup
 {
     _selectedProject = nil;
@@ -45,16 +55,6 @@
         modalDelegate: nil
        didEndSelector: nil//@selector(debugSheetDidEnd:returnCode:contextInfo:)
           contextInfo: NULL];
-}
-
-- (id)initWithWindowNibName:(NSString *)windowNibName
-{
-    self = [super initWithWindowNibName:windowNibName];
-    if (self) 
-    {
-        [self setup];
-    }
-    return self;
 }
 
 - (void) windowDidLoad
@@ -119,6 +119,49 @@
     [self setup];
 }
 
+- (IBAction)quitApplicationPressed:(id)sender 
+{
+    //TODO! Exit more gracefully.. this is just for debug now
+    exit(0);
+}
+
+- (IBAction)buildButtonPressed:(id)sender 
+{
+    if(_selectedProject != nil)
+    {
+        TBXProject* project = [[TBXProject alloc] initWithContetsOfFile:_selectedProject.filepath];
+        
+        TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:self andToolsDirectory:[TBApplicationSettings settings].devtoolsInstallPath];
+        TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
+        
+        
+        TBBuildJob* job = [[TBBuildJob alloc] init];
+        
+        job.projectLocation = [_selectedProject.filepath stringByDeletingLastPathComponent];
+        job.sdk = buildConf.sdk;
+        job.target = targetList.titleOfSelectedItem;
+        job.projectName = project.name;
+        job.buildConfiguration = buildConf.name;
+        
+        [builder buildProject:job];
+        
+    }
+    
+}
+
+- (IBAction)globalPreferencesPressed:(id)sender 
+{
+    [self displaySettingsSheet];
+}
+
+- (IBAction)aboutApplicationPressed:(id)sender {
+}
+
+- (IBAction)selectedTargetChanged:(NSPopUpButton*)sender 
+{
+    [self.targetList setTitle:[sender titleOfSelectedItem]];
+    NSLog(@"Selected target changed");
+}
 
 #pragma mark - Split View Delegate
 
@@ -165,6 +208,37 @@
 	[right setFrame:rightFrame];
 }
 
+
+#pragma mark - Project list delegate
+
+- (NSString*) showRemoteURLDialog
+{
+    
+    _remoteDialogWindow = [[RemoteDialogWindowController alloc] initWithWindowNibName:@"RemoteDialogWindow"];
+    
+    //NOTE TO SOBER SELF: A window will not work when its "visible at launch"
+//    [NSApp beginSheet: _remoteDialogWindow.window
+//       modalForWindow: self.window
+//        modalDelegate: nil
+//       didEndSelector: nil//@selector(debugSheetDidEnd:returnCode:contextInfo:)
+//          contextInfo: NULL];
+    
+    [NSApp beginSheet:_remoteDialogWindow.window 
+           modalForWindow:self.window
+            modalDelegate:self 
+           didEndSelector:NULL 
+              contextInfo:NULL];
+    int result = [NSApp runModalForWindow:_remoteDialogWindow.window];
+    if(result == 1)
+    {
+        return _remoteDialogWindow.urlText.stringValue;
+    }
+    else 
+    {
+        return nil;
+    }
+}
+
 - (void) didSelectProject:(TBProject *)project
 {
     [targetList setEnabled:YES];
@@ -187,51 +261,7 @@
     [self.targetList setTitle:target.name];
 }
 
-- (IBAction)quitApplicationPressed:(id)sender 
-{
-    //TODO! Exit more gracefully.. this is just for debug now
-    exit(0);
-}
-
-- (IBAction)buildButtonPressed:(id)sender 
-{
-    if(_selectedProject != nil)
-    {
-        TBXProject* project = [[TBXProject alloc] initWithContetsOfFile:_selectedProject.filepath];
-        
-        TBBuilder* builder = [[TBBuilder alloc] initWithDelegate:self andToolsDirectory:[TBApplicationSettings settings].devtoolsInstallPath];
-        TBXBuildConfiguration* buildConf = [project.buildConfigurations objectForKey:project.defaultBuildConfigurationName];
-        
-    
-        TBBuildJob* job = [[TBBuildJob alloc] init];
-        
-        job.projectLocation = [_selectedProject.filepath stringByDeletingLastPathComponent];
-        job.sdk = buildConf.sdk;
-        job.target = targetList.titleOfSelectedItem;
-        job.projectName = project.name;
-        job.buildConfiguration = buildConf.name;
-        
-        [builder buildProject:job];
-
-    }
-    
-}
-
-- (IBAction)globalPreferencesPressed:(id)sender 
-{
-    [self displaySettingsSheet];
-}
-
-- (IBAction)aboutApplicationPressed:(id)sender {
-}
-
-- (IBAction)selectedTargetChanged:(NSPopUpButton*)sender 
-{
-    [self.targetList setTitle:[sender titleOfSelectedItem]];
-    NSLog(@"Selected target changed");
-}
-
-#pragma MARK - Builder delegate
+#pragma mark - Builder delegate
 
 - (void) onBuildFailed
 {

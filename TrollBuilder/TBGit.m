@@ -17,17 +17,39 @@
 @synthesize commitComment;
 @synthesize commitAuthor;
 
+- (id)init
+{
+    return nil;
+}
 
 - (id) initWithRemote:(NSString*)remoteURL
 {
-    return nil;
+   
+    self = [super init];
+    if (self) 
+    {
+        NSError* error = nil;
+        gitRepo = [GTRepository repositoryWithURL:[NSURL URLWithString:remoteURL] error:&error];
+        if(error != nil)
+        {
+            return nil;
+        }
+    }
+    return self;
 }
 - (id) initWithLocal:(NSString*)localPath
 {
-    return nil;
+    self = [super init];
+    if (self) 
+    {
+        
+    }
+    return self;
 }
 - (BOOL) checkForAnyUpdates
 {
+    GTReference* head = [gitRepo headReferenceWithError:NULL];
+    GTCommit* commit = (GTCommit *)[gitRepo lookupObjectBySha:[head target]  error:NULL];
     return YES;
 }
 - (BOOL) pullLatest

@@ -15,6 +15,7 @@
 
 @required
 - (void) didSelectProject:(TBProject*)project;
+- (NSString*) showRemoteURLDialog;
 
 @optional
 - (void) didSelectTarget:(TBTarget*)target;
