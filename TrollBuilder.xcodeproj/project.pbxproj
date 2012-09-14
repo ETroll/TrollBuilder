@@ -68,7 +68,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CB30CB3C1585498A00125C62 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		CB30CB4415854A7900125C62 /* TrollBuilderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrollBuilderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB30CB4515854A7900125C62 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CB30CB4A15854A7900125C62 /* TrollBuilderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrollBuilderTests-Info.plist"; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		CBA084BF1595305C000E2E6F /* SettingsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWindowController.h; sourceTree = "<group>"; };
 		CBA084C01595305C000E2E6F /* SettingsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWindowController.m; sourceTree = "<group>"; };
 		CBA084C31595308D000E2E6F /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindow.xib; sourceTree = "<group>"; };
+		CBA22D6E15E40F37005A06F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		CBA41B9615912C3900F3CCE1 /* Bundle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Bundle.icns; path = Resources/Icons/Bundle.icns; sourceTree = SOURCE_ROOT; };
 		CBA41B9815912C5C00F3CCE1 /* Apparchive.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Apparchive.icns; path = Resources/Icons/Apparchive.icns; sourceTree = SOURCE_ROOT; };
 		CBA41B9915912C5C00F3CCE1 /* Documentation.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Documentation.icns; path = Resources/Icons/Documentation.icns; sourceTree = SOURCE_ROOT; };
@@ -167,14 +167,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CB30CB39158545BC00125C62 /* Cocoa UI */ = {
+		CB30CB39158545BC00125C62 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2CFB15422D380023DF27 /* Custom Cells */,
 				CB8830CF154CA50E0066F01F /* Views */,
 				CBCA2D0515422D8B0023DF27 /* ViewControllers */,
 			);
-			name = "Cocoa UI";
+			name = UI;
 			sourceTree = "<group>";
 		};
 		CB30CB3B158545ED00125C62 /* Data Storage */ = {
@@ -229,7 +229,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		CB8830E9154D85890066F01F /* XCode Project Parser */ = {
+		CB8830E9154D85890066F01F /* Project Parser */ = {
 			isa = PBXGroup;
 			children = (
 				CBCA2D0215422D7E0023DF27 /* TBXProject.h */,
@@ -241,7 +241,7 @@
 				CB5E79F6158A80DD00F3EC51 /* TBXBuildConfiguration.h */,
 				CB5E79F7158A80DD00F3EC51 /* TBXBuildConfiguration.m */,
 			);
-			name = "XCode Project Parser";
+			name = "Project Parser";
 			sourceTree = "<group>";
 		};
 		CB9C19641589235800F8C36A /* Data */ = {
@@ -250,6 +250,17 @@
 				CB9C195715891B1600F8C36A /* project.pbxproj */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		CBA22D6C15E40F06005A06F1 /* Global Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA2CE2154226540023DF27 /* TBAppDelegate.h */,
+				CBCA2CE3154226540023DF27 /* TBAppDelegate.m */,
+				CB83EED4158A057A00D19C28 /* TBApplicationSettings.h */,
+				CB83EED5158A057A00D19C28 /* TBApplicationSettings.m */,
+			);
+			name = "Global Objects";
 			sourceTree = "<group>";
 		};
 		CBCA2CC1154226540023DF27 = {
@@ -287,15 +298,12 @@
 		CBCA2CD6154226540023DF27 /* TrollBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				CBCA2CE2154226540023DF27 /* TBAppDelegate.h */,
-				CBCA2CE3154226540023DF27 /* TBAppDelegate.m */,
-				CB83EED4158A057A00D19C28 /* TBApplicationSettings.h */,
-				CB83EED5158A057A00D19C28 /* TBApplicationSettings.m */,
 				CBF693ED154C445800F6D4AC /* Resources */,
+				CBA22D6C15E40F06005A06F1 /* Global Objects */,
 				CB30CB3B158545ED00125C62 /* Data Storage */,
-				CB30CB39158545BC00125C62 /* Cocoa UI */,
-				CB8830E9154D85890066F01F /* XCode Project Parser */,
-				CBD07913158218B20080840F /* XCode Project Build System */,
+				CB30CB39158545BC00125C62 /* UI */,
+				CB8830E9154D85890066F01F /* Project Parser */,
+				CBD07913158218B20080840F /* Build System */,
 				CBDC3DC315E02C3100C0C82A /* Git */,
 				CBCA2CD7154226540023DF27 /* Supporting Files */,
 			);
@@ -305,8 +313,8 @@
 		CBCA2CD7154226540023DF27 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CBA22D6E15E40F37005A06F1 /* README.md */,
 				CB96CBC6159A028200C378A6 /* TrollBuilder.entitlements */,
-				CB30CB3C1585498A00125C62 /* README */,
 				CBCA2CD8154226540023DF27 /* TrollBuilder-Info.plist */,
 				CBCA2CD9154226540023DF27 /* InfoPlist.strings */,
 				CBCA2CDC154226540023DF27 /* main.m */,
@@ -352,7 +360,7 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		CBD07913158218B20080840F /* XCode Project Build System */ = {
+		CBD07913158218B20080840F /* Build System */ = {
 			isa = PBXGroup;
 			children = (
 				CBD07914158219B70080840F /* TBBuildQueue.h */,
@@ -362,7 +370,7 @@
 				CB43D08D15892B0500A3E53E /* TBBuildJob.h */,
 				CB43D08E15892B0500A3E53E /* TBBuildJob.m */,
 			);
-			name = "XCode Project Build System";
+			name = "Build System";
 			sourceTree = "<group>";
 		};
 		CBDC3DC315E02C3100C0C82A /* Git */ = {
